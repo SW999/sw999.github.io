@@ -1,10 +1,14 @@
 'use strict';
 
 const articlesWrapper = document.querySelector('#articles'),
-    myRequest = 'https://newsapi.org/v1/articles?source=buzzfeed&apiKey=61c999a35d5d4ee29e48ccbecff42afd',
+    requestUrl = 'https://newsapi.org/v1/articles?source=buzzfeed&apiKey=61c999a35d5d4ee29e48ccbecff42afd',
+    options = {
+      method: 'GET',
+      cache: 'default'
+    },
     buffer = document.createDocumentFragment();
 
-fetch(myRequest)
+fetch(requestUrl, options)
     .then(response => response.json())
     .then(json => {
         json['articles'].forEach(function (item) {
@@ -36,4 +40,11 @@ fetch(myRequest)
         });
 
         articlesWrapper.appendChild(buffer);
+    })
+    .catch(error => {
+      let errorMessage = document.createElement('h2');
+
+      errorMessage.innerHTML = `Oh no: ${error.message}!`;
+      buffer.appendChild(errorMessage);
+      articlesWrapper.appendChild(buffer);
     });

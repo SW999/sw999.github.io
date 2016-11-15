@@ -31,6 +31,14 @@ body {
   margin: 0 auto;
 }
 
+section h2 {
+  max-width: 100rem;
+  margin: 3.5rem auto;
+  padding: 2rem 3rem;
+  color: red;
+  font-weight:bold;
+}
+
 article {
   max-width: 100rem;
   margin: 3.5rem auto;
