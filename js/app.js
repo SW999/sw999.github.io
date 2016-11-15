@@ -1,12 +1,13 @@
 'use strict';
 
-let articlesWrapper = document.querySelector('#articles'),
-    myRequest = new Request('https://newsapi.org/v1/articles?source=buzzfeed&apiKey=61c999a35d5d4ee29e48ccbecff42afd'),
+const articlesWrapper = document.querySelector('#articles'),
+    myRequest = 'https://newsapi.org/v1/articles?source=buzzfeed&apiKey=61c999a35d5d4ee29e48ccbecff42afd',
     buffer = document.createDocumentFragment();
 
-fetch(myRequest).then(function(response) {
-    return response.json().then(function(json) {
-        json['articles'].forEach(function (item, index) {
+fetch(myRequest)
+    .then(response => response.json())
+    .then(json => {
+        json['articles'].forEach(function (item) {
             let article = document.createElement('article'),
                 title = document.createElement('h3'),
                 author = document.createElement('span'),
@@ -36,4 +37,3 @@ fetch(myRequest).then(function(response) {
 
         articlesWrapper.appendChild(buffer);
     });
-});
