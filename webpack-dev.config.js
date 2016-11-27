@@ -20,6 +20,7 @@ module.exports = {
     },
     output: {
         path: './build',
+        publicPath: '',
         filename: 'bundle.[hash].js'
     },
     externals: [],

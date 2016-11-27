@@ -12,7 +12,7 @@ module.exports = {
                           inject: true,
                           title: 'BuzzFeed top news',
                           favicon: './app/favicon.ico',
-                          filename: 'index.html',
+                          filename: '../index.html',
                           template: './app/index_template.html'
                         })
 };

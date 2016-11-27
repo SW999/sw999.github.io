@@ -23,7 +23,8 @@ module.exports = {
         app: ['./app/js/main.js']
     },
     output: {
-        path: './build',
+        path: './build/',
+        publicPath: './build/',
         filename: 'bundle.[hash].js'
     },
     module: {
