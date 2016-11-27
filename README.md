@@ -12,9 +12,14 @@ npm install
 
 
 ### Usage
+Run Dev server
 
 ```shell
-gulp
+npm run dev
 ```
 
-Code will be transpiled and added polyfill for promises and fetch. Done
+Run production build
+
+```shell
+npm run build
+```

@@ -1,36 +1,3 @@
-*,*:after,*:before {
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-}
-
-body, html {
-  overflow-x: hidden;
-}
-
-html {
-  overflow-y: scroll;
-  font-size: 10px;
-}
-
-body {
-  color: rgba(0,0,0,0.8);
-  font: 1.4rem/1.3 Open Sans, Arial, Helvetica, sans-serif;
-  background: #f0f0f0;
-}
-
-.top-header {
-  margin-bottom: 1.5rem;
-  padding: 2rem 1rem;
-  border-bottom: 1px solid silver;
-  background-color: #fff;
-}
-
-.top-header h1 {
-  max-width: 100rem;
-  margin: 0 auto;
-}
-
 section h2 {
   max-width: 100rem;
   margin: 3.5rem auto;

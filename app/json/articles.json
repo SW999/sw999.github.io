@@ -1,0 +1,29 @@
+{
+	"status": "ok",
+	"source": "buzzfeed",
+	"sortBy": "top",
+  "0": "something",
+  "1": "something different",
+	"articles": [{
+			"author": "Casey Rackham",
+			"title": "21 Totally Awful “Grey’s Anatomy” Moments That Will Make You Sob For Days",
+			"description": "Shonda, are you trying to kill us?",
+			"url": "https://www.buzzfeed.com/caseyrackham/death-related-moments-from-greys-anatomy-that-you-1",
+			"urlToImage": "https://img.buzzfeed.com/buzzfeed-static/static/2015-10/16/20/enhanced/webdr14/original-25996-1445040012-2.jpg?crop=1227:690;0,0",
+			"publishedAt": "2016-11-27T18:46:04Z"
+		}, {
+			"author": "Alison Caporimo",
+			"title": "16 Breathtaking Leg Tattoos That'll Make You Want To Get Inked",
+			"description": "If you like it then you better put a ~tat~ on it.",
+			"url": "https://www.buzzfeed.com/alisoncaporimo/tattoos-thatll-make-you-want-to-get-inked",
+			"urlToImage": "https://img.buzzfeed.com/buzzfeed-static/static/2016-11/23/16/campaign_images/buzzfeed-prod-fastlane01/16-breathtaking-leg-tattoos-thatll-make-you-want--2-17933-1479935875-1_dblbig.jpg",
+			"publishedAt": "2016-11-27T18:31:03Z"
+		}, {
+			"author": "Elaina Wahl",
+			"title": "15 Dogs Who Are Clearly The Favorite Child",
+			"description": "Mom claims she doesn't play favorites, but we all know she's lying.",
+			"url": "https://www.buzzfeed.com/elainawahl/15-dogs-who-are-clearly-the-favorite-child",
+			"urlToImage": "https://img.buzzfeed.com/buzzfeed-static/static/2016-11/22/15/enhanced/buzzfeed-prod-fastlane02/original-8511-1479847632-2.png?crop=1160:1344;0,0",
+			"publishedAt": "2016-11-27T18:16:04Z"
+		}]
+}

@@ -1,10 +1,41 @@
 {
-  "name": "babel-transpiler",
-  "version": "0.0.1",
+  "name": "frontCamp2016",
+  "version": "3.0.0",
+  "description": "frontCamp 2016-2017",
+  "main": "server/index.js",
+  "private": false,
+  "scripts": {
+    "dev-server": "nodemon server/index.js --watch-poll server",
+    "dev-web": "webpack-dev-server --config ./webpack-dev.config.js --progress --colors --content-base build --port 2992 --host 0.0.0.0",
+    "dev": "npm cache clear & npm run dev-web & npm run dev-server",
+    "build": "webpack --config ./webpack-prod.config.js --progress --colors"
+  },
+  "repository": "git@github.com:SW999/sw999.github.io.git",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4.3.1",
+    "npm": ">=2.14.12"
+  },
+  "dependencies": {
+    "bundle-loader": "^0.5.4",
+    "compression": "^1.6.2",
+    "sprintf-js": "^1.0.3",
+    "express": "^4.14.0"
+  },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "babel-preset-es2015-ie": "^6.6.2",
-    "gulp-babel": "^6.1.2",
-    "gulp-polyfiller": "^0.0.1"
+    "babel-core": "^5.5.8",
+    "babel-loader": "^5.1.4",
+    "babel-runtime": "^5.5.8",
+    "css-loader": "0.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.4",
+    "html-webpack-plugin": "^1.5.2",
+    "node-libs-browser": "^0.5.2",
+    "nodemon": "^1.11.0",
+    "strip-loader": "^0.1.2",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.16.2",
+    "path": "~0.12.7"
   }
 }

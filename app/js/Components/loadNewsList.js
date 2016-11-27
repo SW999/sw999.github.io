@@ -1,12 +1,11 @@
-'use strict';
-
 const articlesWrapper = document.querySelector('#articles'),
     requestUrl = 'https://newsapi.org/v1/articles?source=buzzfeed&apiKey=61c999a35d5d4ee29e48ccbecff42afd',
     options = {
         method: 'GET',
         cache: 'default'
     },
-    buffer = document.createDocumentFragment();
+    buffer = document.createDocumentFragment(),
+    loadButton = document.querySelector('#loadButton');
 
 fetch(requestUrl, options)
     .then(response => response.json())
@@ -26,7 +25,7 @@ fetch(requestUrl, options)
 
             return buffer;
         });
-
+        articlesWrapper.removeChild(loadButton);
         articlesWrapper.appendChild(buffer);
     })
     .catch(error => {
