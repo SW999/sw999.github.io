@@ -13,7 +13,7 @@ var devLoaders = [
 module.exports = {
     entry: {
         app: [
-            'webpack-dev-server/client?http://localhost:2992',
+            'webpack-dev-server/client?http://localhost:8080',
             'webpack/hot/only-dev-server',
             './app/js/main.js'
         ]

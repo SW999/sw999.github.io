@@ -6,7 +6,7 @@
   "private": false,
   "scripts": {
     "dev-server": "nodemon server/index.js --watch-poll server",
-    "dev-web": "webpack-dev-server --config ./webpack-dev.config.js --progress --colors --content-base build --port 2992 --host 0.0.0.0",
+    "dev-web": "webpack-dev-server --config ./webpack-dev.config.js --progress --colors --content-base build --port 8080 --host 0.0.0.0",
     "dev": "npm cache clear & npm run dev-web & npm run dev-server",
     "build": "webpack --config ./webpack-prod.config.js --progress --colors"
   },

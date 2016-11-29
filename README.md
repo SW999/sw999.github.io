@@ -18,6 +18,12 @@ Run Dev server
 npm run dev
 ```
 
+Locall URl will be:
+
+```shell
+http://localhost:8080/
+```
+
 Run production build
 
 ```shell
