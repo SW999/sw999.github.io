@@ -1,3 +1,5 @@
+let articleBuilder = require("./articleBuilder");
+
 const articlesWrapper = document.querySelector('#articles'),
     requestUrl = 'https://newsapi.org/v1/articles?source=buzzfeed&apiKey=61c999a35d5d4ee29e48ccbecff42afd',
     options = {
@@ -11,20 +13,13 @@ fetch(requestUrl, options)
     .then(response => response.json())
     .then(json => {
         json['articles'].forEach(function (item) {
-            let article = document.createElement('article'),
-                {title, author, publishedAt: date, urlToImage='http://xpenology.org/wp-content/themes/qaengine/img/default-thumbnail.jpg', description: text, url} = item,
-                articleText = `<h3>${title}</h3>
-                                <span>Author: ${author}, date: <em>${date}</em></span><br/>
-                                <img src=${urlToImage}>
-                                <p>${text}</p>
-                                <a href=${url}>Read more...</a>`;
+            let article = new articleBuilder.create(item);
 
-
-            article.innerHTML = articleText;
-            buffer.appendChild(article);
+            buffer.appendChild(article.run());
 
             return buffer;
         });
+
         articlesWrapper.removeChild(loadButton);
         articlesWrapper.appendChild(buffer);
     })
