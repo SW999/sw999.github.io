@@ -65,4 +65,4 @@ let CreateNewArticle = function (content) {
  };
 };
 
-exports.create = CreateNewArticle;
+module.exports = CreateNewArticle;

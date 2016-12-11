@@ -14,7 +14,7 @@ fetch(requestUrl, options)
     .then(response => response.json())
     .then(json => {
         json['articles'].forEach(function (item) {
-            let article = new ArticleBuilder.create(item);
+            let article = new ArticleBuilder(item);
 
             buffer.appendChild(article.getItem());
 
