@@ -56,7 +56,7 @@ function Article(content1) {
 
 let CreateNewArticle = function (content) {
 
-  this.run = function () {
+  this.getItem = function () {
     let build = new Build(),
         articleBuilder = new ArticleBuilder(content),
         article = build.construct(articleBuilder);

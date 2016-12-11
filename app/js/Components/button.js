@@ -1,5 +1,7 @@
-let articlesWrapper = document.querySelector('#articles'),
-    buffer = document.createDocumentFragment(),
+let dom = require("./domFacade");
+
+let articlesWrapper = dom.getEl('#articles'),
+    buffer = dom.tempEl(),
     button = document.createElement('button');
 
 button.id = 'loadButton';
