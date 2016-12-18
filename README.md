@@ -1,8 +1,5 @@
 # FrontCamp
 
-> Gulp task for transpiling new JS features for stupid browsers
-
-
 ## Getting Started
 Please run this code in command line:
 
