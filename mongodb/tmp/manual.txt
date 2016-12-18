@@ -1,0 +1,14 @@
+1) run mongod and mongo
+
+2) create folder "c:\tmp" and copy file articles.json into the folder
+
+3) import date from articles.json to the new db "posts" with collection "articles":
+mongoimport --db posts --collection articles --type json --file c:\tmp\articles.json --jsonArray
+
+4) (CRUD) open cmd for folder mongodb/bin and run:
+mongo < c:\tmp\demo.js
+
+5) create an archive with database dump:
+mongodump --db posts --gzip --archive=c:\tmp\articles.gz
+
+6) open new cmd for mongo and run: mongoimport --db grades --collection score --type json --file c:\tmp\grades.json
