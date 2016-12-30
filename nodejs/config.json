@@ -1,0 +1,6 @@
+{
+    "port": 3000,
+    "mongoose": {
+        "uri": "mongodb://sw:sergik@ds141358.mlab.com:41358/articles"
+    }
+}

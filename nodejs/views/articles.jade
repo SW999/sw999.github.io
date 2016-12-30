@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  header.top-header
+    h1= title
+
+  section#articles
+    each key in json
+      article
+        h3 !{key.title}
+        span Author: !{key.author}
+        p !{key.description}
+        a(href="/articles/"+key._id)= "Read more"
