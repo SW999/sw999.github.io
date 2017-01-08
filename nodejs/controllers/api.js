@@ -61,45 +61,32 @@ exports.showArticle = function (req, res) {
     });
 };
 
-exports.updateArticle = function (req, res){
-    return ArticleModel.findById(req.params.id, function (err, article) {
-        article._id = req.params.id;
-        article.title = req.body.title;
-        article.description = req.body.description;
-        article.author = req.body.author;
-        article.content = req.body.content;
-        article.url = req.body.url;
-        article.modified = Date.now();
-
-        return article.save(function (err) {
-            if (!err) {
-                log.info("article updated");
-                res.render('article', { title: 'Article '+req.params.id+' (changed)', json:article });
+exports.updateArticle = function (req, res) {
+    return ArticleModel.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true}, function (err, article) {
+        if (err) {
+            if (err.name == 'ValidationError') {
+                res.statusCode = 400;
+                res.send({error: 'Validation error put'});
             } else {
-                if(err.name == 'ValidationError') {
-                    res.statusCode = 400;
-                    res.send({ error: 'Validation error put' });
-                } else {
-                    res.statusCode = 500;
-                    res.send({ error: 'Server error' });
-                }
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
+                res.statusCode = 500;
+                res.send({error: 'Server error'});
             }
-        });
+            log.error('Internal error(%d): %s', res.statusCode, err.message);
+        }
+
+        log.info("article updated");
+        res.render('article', {title: 'Article ' + req.params.id + ' (changed)', json: article});
     });
 };
 
-exports.deleteArticle = function (req, res){
-    return ArticleModel.findById(req.params.id, function (err, article) {
-        return article.remove(function (err) {
-            if (!err) {
-                log.info("article removed");
-                res.render('deleted', { title: 'Article was deleted' });
-            } else {
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s',res.statusCode,err.message);
-                return res.send({ error: 'Server error' });
-            }
-        });
+exports.deleteArticle = function (req, res) {
+    return ArticleModel.findByIdAndRemove(req.params.id, function (err, article) {
+        if (err) {
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s', res.statusCode, err.message);
+            return res.send({error: 'Server error'});
+        }
+        log.info("article removed");
+        res.render('deleted', {title: 'Article was deleted'});
     });
 };
