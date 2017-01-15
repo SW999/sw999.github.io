@@ -18,5 +18,8 @@
     "node-sass-middleware": "0.9.8",
     "serve-favicon": "~2.3.0",
     "winston": "^2.3.0"
+  },
+  "devDependencies": {
+    "mongoose-url-slugs": "^0.2.1"
   }
 }

@@ -4,12 +4,12 @@ var express = require('express'),
 
 app.get('/', api.allArticles);
 
-app.post('/:id', api.createNew);
+app.post('/:alias', api.createNew);
 
-app.get('/:id', api.showArticle);
+app.get('/:alias', api.showArticle);
 
-app.put('/:id', api.updateArticle);
+app.put('/:alias', api.updateArticle);
 
-app.delete('/:id', api.deleteArticle);
+app.delete('/:alias', api.deleteArticle);
 
 module.exports = app;

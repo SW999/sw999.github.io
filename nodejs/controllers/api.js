@@ -15,7 +15,6 @@ exports.allArticles = function (req, res) {
 
 exports.createNew = function(req, res) {
     var article = new ArticleModel({
-        _id: req.body._id,
         author: req.body.author,
         title: req.body.title,
         description: req.body.description,
@@ -24,10 +23,10 @@ exports.createNew = function(req, res) {
         modified: Date.now()
     });
 
-    article.save(function (err) {
+    article.save(function (err, newArticle) {
         if (!err) {
             log.info("article created");
-            res.redirect("/articles/" + req.body._id);
+            res.redirect("/articles/" + newArticle.alias);
         } else {
             if(err.name == 'ValidationError') {
                 res.statusCode = 400;
@@ -42,17 +41,9 @@ exports.createNew = function(req, res) {
 };
 
 exports.showArticle = function (req, res) {
-    var numberOfDocs,
-        setNumberOfDocuments = function (err, count) {
-            if (err) return;
-
-            numberOfDocs = count;
-        };
-    ArticleModel.count({}, setNumberOfDocuments);
-
-    return ArticleModel.findById(req.params.id, function (err, article) {
+    return ArticleModel.findOne({'alias' : req.params.alias}, function (err, article) {
         if (!err) {
-            res.render('article', {title: 'Article ' + req.params.id, json: article, nextId: numberOfDocs + 1});
+            res.render('article', {json: article});
         } else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s', res.statusCode, err.message);
@@ -62,7 +53,7 @@ exports.showArticle = function (req, res) {
 };
 
 exports.updateArticle = function (req, res) {
-    return ArticleModel.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true}, function (err, article) {
+    return ArticleModel.findOneAndUpdate({'alias' : req.params.alias}, {$set: req.body}, {new: true}, function (err, article) {
         if (err) {
             if (err.name == 'ValidationError') {
                 res.statusCode = 400;
@@ -75,18 +66,19 @@ exports.updateArticle = function (req, res) {
         }
 
         log.info("article updated");
-        res.render('article', {title: 'Article ' + req.params.id + ' (changed)', json: article});
+        res.render('article', {json: article});
     });
 };
 
 exports.deleteArticle = function (req, res) {
-    return ArticleModel.findByIdAndRemove(req.params.id, function (err, article) {
+    return ArticleModel.findOneAndRemove({'alias' : req.params.alias}, function (err, article) {
         if (err) {
             res.statusCode = 500;
             log.error('Internal error(%d): %s', res.statusCode, err.message);
             return res.send({error: 'Server error'});
+        } else {
+            log.info("article removed");
+            res.render('deleted', {title: 'Article was deleted'});
         }
-        log.info("article removed");
-        res.render('deleted', {title: 'Article was deleted'});
     });
 };

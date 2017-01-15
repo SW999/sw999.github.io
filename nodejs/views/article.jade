@@ -2,7 +2,7 @@ extends layout
 
 block content
   header.top-header
-    h1= title
+    h1 Article: #{json.title}
 
   section#articles
     article
@@ -27,7 +27,7 @@ block content
     div.edit-page.hidden
       h3 Edit article
       br
-      form(name="edit", method="POST", class="form", action="/articles/"+json.id+"?_method=PUT")
+      form(name="edit", method="POST", class="form", action="/articles/"+json.alias+"?_method=PUT")
         input(type="hidden", name="url", value=json.url)
         input(type="hidden", name="author", value=json.author)
         div.input
@@ -45,8 +45,7 @@ block content
     div.create-new.hidden
         h3 Add new article
         br
-        form(name="edit", method="POST", class="form", action="/articles/"+json.id)
-            input(type="hidden", name="_id", value= nextId)
+        form(name="edit", method="POST", class="form", action="/articles/"+json.alias)
             div.input
                 label(for="author")= "Author"
                 input(id="author" type="text", name="author", placeholder="Tape Your name")
@@ -68,6 +67,6 @@ block content
     div.delete-block.hidden
         h3 Delete article?
         br
-        form(name="edit", method="POST", class="form", action="/articles/"+json.id+"?_method=DELETE")
+        form(name="edit", method="POST", class="form", action="/articles/"+json.alias+"?_method=DELETE")
             div.actions
                 input(type="submit", value="Delete")

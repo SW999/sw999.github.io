@@ -2,6 +2,7 @@ var libs = process.cwd() + '/libs/';
 var config = require(libs + 'config');
 var mongoose = require('mongoose');
 var log = require('./../libs/log')(module);
+var URLSlugs = require('mongoose-url-slugs');
 
 mongoose.connect(config.get('mongoose:uri'));
 var db = mongoose.connection;
@@ -15,7 +16,6 @@ db.once('open', function callback () {
 });
 
 var Article = new Schema({
-  _id: {type: Number, required: true },
   title: { type: String, required: true },
   author: { type: String, required: true },
   description: { type: String, required: true },
@@ -23,5 +23,7 @@ var Article = new Schema({
   url: { type: String, required: true },
   modified: { type: Date, default: Date.now }
 });
+
+Article.plugin(URLSlugs('title', {field: 'alias'}));
 
 module.exports = mongoose.model('Article', Article);
