@@ -4,36 +4,45 @@ var path = require('path');
 
 var devLoaders = [
     {
-        test: /\.css$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "style-loader!css"
+        loaders: ['react-hot-loader', 'babel-loader?optional=runtime']
+    },
+    {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loader: "style!css?sourceMap!sass?sourceMap"
     }
 ];
 
 module.exports = {
     entry: {
         app: [
-            'webpack-dev-server/client?http://localhost:8080',
+            'webpack-dev-server/client?http://localhost:3000',
             'webpack/hot/only-dev-server',
-            './app/js/main.js'
+            './react_app/main.js'
         ]
     },
     output: {
-        path: './build',
-        publicPath: '',
+        path: './public',
+        publicPath: 'http://localhost:3000/',
         filename: 'bundle.[hash].js'
     },
     externals: [],
     devtool: 'eval',
     devServer: {
         hot: true,
-        contentBase: './app'
+        contentBase: './react_app'
     },
     module: {
         loaders: commonConfig.loaders.concat(devLoaders)
     },
     resolve: {
-        modulesDirectories: ['node_modules']
+        modulesDirectories: ['node_modules'],
+        alias: {
+            //config: path.join(__dirname, 'config', 'dev'),
+            'react' : path.resolve(__dirname, 'node_modules/react')
+        }
     },
     watchOptions: {
         aggregateTimeout: 100,
@@ -45,17 +54,19 @@ module.exports = {
         warnAtPercent: 80
     },
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env':{
-                'NODE_ENV': JSON.stringify('development')
-            }
-        }),
+        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         commonConfig.indexPagePlugin,
         new webpack.optimize.CommonsChunkPlugin({
             children: true,
             async: true
+        }),
+        new webpack.ProvidePlugin({
+            'React':      'react',
+            '$':          'jquery',
+            'jQuery':     'jquery',
+            'ReactDOM':   'react-dom'
         })
     ]
 };
