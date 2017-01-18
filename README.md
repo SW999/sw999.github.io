@@ -9,7 +9,7 @@ npm install
 
 
 ### Usage
-Run Dev and api servers - just run file:
+Start Dev and api servers - just run file:
 
 ```shell
 start.bat
