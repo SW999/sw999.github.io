@@ -29,7 +29,7 @@ module.exports = {
         filename: 'bundle.[hash].js'
     },
     externals: [],
-    devtool: 'eval',
+    devtool: 'cheap-eval-source-map',
     devServer: {
         hot: true,
         contentBase: './react_app'
@@ -40,7 +40,6 @@ module.exports = {
     resolve: {
         modulesDirectories: ['node_modules'],
         alias: {
-            //config: path.join(__dirname, 'config', 'dev'),
             'react' : path.resolve(__dirname, 'node_modules/react')
         }
     },

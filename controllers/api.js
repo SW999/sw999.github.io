@@ -3,13 +3,13 @@ var ArticleModel = require(process.cwd() + '/models/article'),
 
 exports.allArticles = function (req, res) {
     return ArticleModel.find(function (err, articles) {
-        if (!err) {
-            res.render('articles', {title: 'Articles', json: articles});
-        } else {
+        if (err) {
             res.statusCode = 500;
             log.error('Internal error(%d): %s', res.statusCode, err.message);
-            return res.send({error: 'Server error'});
+            return res.send({error: err.message});
         }
+            res.statusCode = 200;
+            res.send(200, {data: JSON.stringify(articles)});
     });
 };
 
@@ -47,7 +47,7 @@ exports.showArticle = function (req, res) {
         } else {
             res.statusCode = 500;
             log.error('Internal error(%d): %s', res.statusCode, err.message);
-            return res.send({error: 'Server error'});
+            return res.send({error: err.message});
         }
     });
 };
@@ -57,10 +57,10 @@ exports.updateArticle = function (req, res) {
         if (err) {
             if (err.name == 'ValidationError') {
                 res.statusCode = 400;
-                res.send({error: 'Validation error put'});
+                res.send({error: 'Validation error put: '+err.message});
             } else {
                 res.statusCode = 500;
-                res.send({error: 'Server error'});
+                res.send({error: 'Server error: '+err.message});
             }
             log.error('Internal error(%d): %s', res.statusCode, err.message);
         }

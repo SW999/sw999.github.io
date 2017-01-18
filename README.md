@@ -9,20 +9,14 @@ npm install
 
 
 ### Usage
-Run Dev server
+Run Dev and api servers - just run file:
 
 ```shell
-npm run dev
+start.bat
 ```
 
 Locall URl will be:
 
 ```shell
-http://localhost:8080/
-```
-
-Run production build
-
-```shell
-npm run build
+http://localhost:3000/
 ```
