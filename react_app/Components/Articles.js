@@ -1,64 +1,66 @@
+import ArticlePreview from './ArticlePreview';
+
 export default React.createClass({
 
     displayName: 'Articles',
 
+    getInitialState: function () {
+        return {
+            articles: null
+        };
+    },
+
     componentDidMount: function () {
-        var requestUrl = 'http://localhost:2992/api',
+        var self = this;
+        const requestUrl = 'http://localhost:2992/api',
             options = {
                 method: 'GET',
                 cache: 'no-cache',
-                mode: 'no-cors',
+                mode: 'cors',
                 headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    "Accept": 'application/json',
+                    'Origin': 'http://localhost:3000'
                 }
             };
 
-        //this._request(requestUrl, options);
+        this._loadData(requestUrl, options, self._parseArticles);
+    },
 
-        fetch(requestUrl, options)
-            .then(response => response.json())
-            .then(json => {
-                console.log(json);
-            })
-            .catch(error => {
-                console.warn(`Oh no: ${error}!`);
-            });
+    componentDidUpdate: function () {
+        console.info('Updated!');
     },
 
     render: function () {
         return (
             <div>
                 <h1>Articles</h1>
+                {!!this.state.articles && this._getArticles()}
             </div>
         );
     },
 
-    _parseJSON: function (response) {
-
-        return new Promise((resolve) => {
-            response.json()
-            .then((json) => resolve({
-                status: response.status,
-                ok: response.ok,
-                json
-            }))});
+    _loadData: function (requestUrl, options, callback) {
+        fetch(requestUrl, options)
+            .then(response => {
+                return response.json()
+            })
+            .then(json => {
+                callback(json);
+            })
+            .catch(error => {
+                console.warn(`Oh no: ${error}!`);
+            });
     },
 
-    _request: function (url, options) {
-        return new Promise((resolve, reject) => {
-            fetch(url, options)
-                .then(this._parseJSON)
-                .then((response) => {
-                    if (response.ok) {
-                        return resolve(response.json);
-                    }
-                    // extract the error from the server's json
-                    return reject(response.json.meta.error);
-                })
-                .catch((error) => reject({
-                    networkError: error.message,
-                }));
+    _parseArticles: function (data) {
+        var articles = JSON.parse(data.data);
+
+        this.setState({articles: articles});
+    },
+
+    _getArticles: function () {
+        return this.state.articles.map(function (value, index) {
+            return (<ArticlePreview key={index} data={value} />);
         });
     }
 });

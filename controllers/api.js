@@ -1,15 +1,13 @@
-var ArticleModel = require(process.cwd() + '/models/article'),
-    log = require(process.cwd() + '/libs/log')(module);
+var ArticleModel = require(process.cwd() + '/models/article');
 
 exports.allArticles = function (req, res) {
     return ArticleModel.find(function (err, articles) {
         if (err) {
             res.statusCode = 500;
-            log.error('Internal error(%d): %s', res.statusCode, err.message);
             return res.send({error: err.message});
         }
             res.statusCode = 200;
-            res.send(200, {data: JSON.stringify(articles)});
+            res.status(200).send({data: JSON.stringify(articles)});
     });
 };
 
@@ -25,7 +23,6 @@ exports.createNew = function(req, res) {
 
     article.save(function (err, newArticle) {
         if (!err) {
-            log.info("article created");
             res.redirect("/articles/" + newArticle.alias);
         } else {
             if(err.name == 'ValidationError') {
@@ -35,7 +32,6 @@ exports.createNew = function(req, res) {
                 res.statusCode = 500;
                 res.send({ error: 'Server error' });
             }
-            log.error('Internal error(%d): %s',res.statusCode,err.message);
         }
     });
 };
@@ -46,7 +42,6 @@ exports.showArticle = function (req, res) {
             res.render('article', {json: article});
         } else {
             res.statusCode = 500;
-            log.error('Internal error(%d): %s', res.statusCode, err.message);
             return res.send({error: err.message});
         }
     });
@@ -62,10 +57,7 @@ exports.updateArticle = function (req, res) {
                 res.statusCode = 500;
                 res.send({error: 'Server error: '+err.message});
             }
-            log.error('Internal error(%d): %s', res.statusCode, err.message);
         }
-
-        log.info("article updated");
         res.render('article', {json: article});
     });
 };
@@ -74,10 +66,8 @@ exports.deleteArticle = function (req, res) {
     return ArticleModel.findOneAndRemove({'alias' : req.params.alias}, function (err, article) {
         if (err) {
             res.statusCode = 500;
-            log.error('Internal error(%d): %s', res.statusCode, err.message);
             return res.send({error: 'Server error'});
         } else {
-            log.info("article removed");
             res.render('deleted', {title: 'Article was deleted'});
         }
     });

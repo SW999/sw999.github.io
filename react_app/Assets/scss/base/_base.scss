@@ -21,9 +21,13 @@ body {
   background-color: #fff;
 }
 
-.top-header h1 {
-  max-width: 100rem;
-  margin: 0 auto;
+section {
+  h1 {
+    max-width: 100rem;
+    margin: 0 auto 3rem;
+    font-size: 2.8rem;
+    
+  }
 }
 
 .load-button {

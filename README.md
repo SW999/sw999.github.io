@@ -8,12 +8,26 @@ npm install
 ```
 
 
-### Usage
+### Usage for Win
 Start Dev and api servers - just run file:
 
 ```shell
 start.bat
 ```
+
+### Usage for Mac
+Start Dev server:
+
+```shell
+npm run dev
+```
+
+Start Api server:
+
+```shell
+npm start
+```
+
 
 Locall URl will be:
 

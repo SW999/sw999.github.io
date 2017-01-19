@@ -1,7 +1,6 @@
 var libs = process.cwd() + '/libs/';
 var config = require(libs + 'config');
 var mongoose = require('mongoose');
-var log = require('./../libs/log')(module);
 var URLSlugs = require('mongoose-url-slugs');
 
 mongoose.connect(config.get('mongoose:uri'));
@@ -9,11 +8,11 @@ var db = mongoose.connection;
 var Schema = mongoose.Schema;
 
 db.on('error', function (err) {
-    log.error('connection error:', err.message);
+    console.warn('connection error:', err.message);
 });
 
 db.once('open', function callback () {
-    log.info("Connected to DB!");
+    console.info("Connected to DB!");
 });
 
 var Article = new Schema({
