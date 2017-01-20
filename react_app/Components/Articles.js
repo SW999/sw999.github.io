@@ -5,6 +5,16 @@ export default React.createClass({
 
     displayName: 'Articles',
 
+    propTypes: {
+        routes: React.PropTypes.array.isRequired
+    },
+
+    getDefaultProps: function() {
+        return {
+            routes: []
+        };
+    },
+
     getInitialState: function () {
         return {
             articles: null
@@ -20,7 +30,10 @@ export default React.createClass({
     },
 
     shouldComponentUpdate: function(nextProps, nextState) {
-        return nextState.articles !== this.state.articles;
+        let newArticles = JSON.stringify(nextState.articles),
+            oldArticles = JSON.stringify(this.state.articles);
+
+        return newArticles !== oldArticles;
     },
 
     render: function () {

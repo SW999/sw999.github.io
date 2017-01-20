@@ -5,6 +5,20 @@ export default React.createClass({
 
     displayName: 'Article',
 
+    propTypes: {
+        params: React.PropTypes.shape({
+            alias: React.PropTypes.string
+        })
+    },
+
+    getDefaultProps: function() {
+        return {
+            params: {
+                alias: ''
+            }
+        };
+    },
+
     getInitialState: function () {
         return {
             articles: null
