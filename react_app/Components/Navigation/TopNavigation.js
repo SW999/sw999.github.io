@@ -6,14 +6,14 @@ export default React.createClass({
 
     render: function () {
         return (
-        <header className="top-header">
-            <nav>
-                <ul className='top-navigation'>
-                    <li><NavLink onlyActiveOnIndex={true} to='/'>Главная</NavLink></li>
-                    <li><NavLink to='/articles' activeClassName='active'>Статьи</NavLink></li>
-                </ul>
-            </nav>
-        </header>
+            <header className="top-header">
+                <nav>
+                    <ul className='top-navigation'>
+                        <li><NavLink onlyActiveOnIndex={true} to='/'>Home</NavLink></li>
+                        <li><NavLink to='/articles' activeClassName='active'>Articles</NavLink></li>
+                    </ul>
+                </nav>
+            </header>
         );
     }
 });

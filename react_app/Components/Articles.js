@@ -1,4 +1,5 @@
-import ArticlePreview from './ArticlePreview';
+import { Link } from 'react-router';
+import RoutingConstants from '../Constants/RoutingConstants';
 
 export default React.createClass({
 
@@ -11,19 +12,7 @@ export default React.createClass({
     },
 
     componentDidMount: function () {
-        var self = this;
-        const requestUrl = 'http://localhost:2992/api',
-            options = {
-                method: 'GET',
-                cache: 'no-cache',
-                mode: 'cors',
-                headers: {
-                    "Accept": 'application/json',
-                    'Origin': 'http://localhost:3000'
-                }
-            };
-
-        this._loadData(requestUrl, options, self._parseArticles);
+        this._loadData(RoutingConstants.API_URL, RoutingConstants.HEADER_OPTIONS, this._parseArticles);
     },
 
     componentDidUpdate: function () {
@@ -31,10 +20,22 @@ export default React.createClass({
     },
 
     render: function () {
+        let articles = !!this.state.articles
+            ? this.state.articles.map(function (value, index) {
+            return (<article key={index}>
+                <h3>{value.title}</h3>
+                <span>Author: {value.author}, date: <em>{value.modified}</em></span><br/>
+                <img src={value.url}/>
+                <p>{value.description}</p>
+                <Link to={'/articles/' + value.alias}>Read more...</Link>
+            </article>);
+        })
+            : null;
+
         return (
             <div>
                 <h1>Articles</h1>
-                {!!this.state.articles && this._getArticles()}
+                {articles}
             </div>
         );
     },
@@ -56,11 +57,5 @@ export default React.createClass({
         var articles = JSON.parse(data.data);
 
         this.setState({articles: articles});
-    },
-
-    _getArticles: function () {
-        return this.state.articles.map(function (value, index) {
-            return (<ArticlePreview key={index} data={value} />);
-        });
     }
 });

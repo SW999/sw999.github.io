@@ -4,9 +4,9 @@ var express = require('express'),
 
 app.get('/', api.allArticles);
 
-app.post('/:alias', api.createNew);
-
 app.get('/:alias', api.showArticle);
+
+app.post('/:alias', api.createNew);
 
 app.put('/:alias', api.updateArticle);
 

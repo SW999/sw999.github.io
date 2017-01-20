@@ -11,6 +11,17 @@ exports.allArticles = function (req, res) {
     });
 };
 
+exports.showArticle = function (req, res) {
+    return ArticleModel.findOne({'alias': req.params.alias}, function (err, article) {
+        if (err) {
+            res.statusCode = 500;
+            return res.status(500).send({error: err.message});
+        }
+        res.statusCode = 200;
+        res.status(200).send({data: JSON.stringify(article)});
+    });
+};
+
 exports.createNew = function(req, res) {
     var article = new ArticleModel({
         author: req.body.author,
@@ -32,17 +43,6 @@ exports.createNew = function(req, res) {
                 res.statusCode = 500;
                 res.send({ error: 'Server error' });
             }
-        }
-    });
-};
-
-exports.showArticle = function (req, res) {
-    return ArticleModel.findOne({'alias' : req.params.alias}, function (err, article) {
-        if (!err) {
-            res.render('article', {json: article});
-        } else {
-            res.statusCode = 500;
-            return res.send({error: err.message});
         }
     });
 };

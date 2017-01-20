@@ -1,7 +1,6 @@
 nav {
-  max-width: 660px;
+  max-width: 66rem;
   margin: 0 auto;
-  padding: 20px 0;
   overflow: hidden;
 }
 
@@ -11,8 +10,8 @@ nav {
   padding-left: 0;
   list-style: none;
   float: left;
-  height: 70px;
-  line-height: 70px;
+  height: 7rem;
+  line-height: 7rem;
   text-align:center;
 
   a {
@@ -37,7 +36,7 @@ nav {
         height: 2px;
         position: absolute;
         left: 0;
-        bottom: 20px;
+        bottom: 2rem;
         background: #868686;
         transition: all 0.5s linear;
       }
