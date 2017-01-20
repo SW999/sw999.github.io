@@ -19,6 +19,10 @@ export default React.createClass({
         console.info('Updated!');
     },
 
+    shouldComponentUpdate: function(nextProps, nextState) {
+        return nextState.articles !== this.state.articles;
+    },
+
     render: function () {
         let articles = !!this.state.articles
             ? this.state.articles.map(function (value, index) {
