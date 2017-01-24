@@ -2,6 +2,10 @@ var commonConfig = require('./webpack-common.config.js');
 var webpack = require('webpack');
 var path = require('path');
 
+var Dashboard = require('webpack-dashboard');
+var DashboardPlugin = require('webpack-dashboard/plugin');
+var dashboard = new Dashboard();
+
 var devLoaders = [
     {
         test: /\.jsx?$/,
@@ -32,6 +36,7 @@ module.exports = {
     devtool: 'cheap-eval-source-map',
     devServer: {
         hot: true,
+        quiet: true,
         contentBase: './react_app'
     },
     module: {
@@ -66,6 +71,7 @@ module.exports = {
             '$':          'jquery',
             'jQuery':     'jquery',
             'ReactDOM':   'react-dom'
-        })
+        }),
+        new DashboardPlugin(dashboard.setData)
     ]
 };

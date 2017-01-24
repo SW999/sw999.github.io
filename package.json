@@ -40,5 +40,8 @@
     "path": "~0.12.7",
     "cors": "^2.8.1",
     "history": "^4.5.1"
+  },
+  "devDependencies": {
+    "webpack-dashboard": "^0.2.1"
   }
 }
