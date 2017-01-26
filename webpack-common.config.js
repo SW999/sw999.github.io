@@ -4,20 +4,19 @@ module.exports = {
   loaders: [
 
     {
-        test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
-        loader: 'url?limit=10000&name=[name].[ext]'
+      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+      loader: 'file-loader'
     },
     {
-      test: /\.jsx?$/,
+      test: /\.js$/,
       exclude: /node_modules/,
       loaders: ['babel-loader?optional=runtime']
     }
   ],
 
   indexPagePlugin: new HtmlWebpackPlugin({
-    inject: 'head',
-    title: 'Test react app',
+    inject: 'body',
     filename: 'index.html',
-    template: './react_app/index_template.html'
+    template: './angular/public/index.html'
   })
 };

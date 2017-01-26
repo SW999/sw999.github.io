@@ -1,6 +1,7 @@
 var commonConfig = require('./webpack-common.config.js');
 var webpack = require('webpack');
 var path = require('path');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var Dashboard = require('webpack-dashboard');
 var DashboardPlugin = require('webpack-dashboard/plugin');
@@ -8,14 +9,18 @@ var dashboard = new Dashboard();
 
 var devLoaders = [
     {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['react-hot-loader', 'babel-loader?optional=runtime']
+        loaders: ['babel-loader?optional=runtime']
     },
     {
         test: /\.scss$/,
         exclude: /node_modules/,
         loader: "style!css?sourceMap!sass?sourceMap"
+    },
+    {
+      test: /\.html$/,
+      loader: 'raw-loader'
     }
 ];
 
@@ -24,11 +29,11 @@ module.exports = {
         app: [
             'webpack-dev-server/client?http://localhost:3000',
             'webpack/hot/only-dev-server',
-            './react_app/main.js'
+            './angular/app/app.js'
         ]
     },
     output: {
-        path: './public',
+        path: __dirname + '/public',
         publicPath: 'http://localhost:3000/',
         filename: 'bundle.[hash].js'
     },
@@ -37,7 +42,7 @@ module.exports = {
     devServer: {
         hot: true,
         quiet: true,
-        contentBase: './react_app'
+        contentBase: './angular/public'
     },
     module: {
         loaders: commonConfig.loaders.concat(devLoaders)
@@ -45,7 +50,7 @@ module.exports = {
     resolve: {
         modulesDirectories: ['node_modules'],
         alias: {
-            'react' : path.resolve(__dirname, 'node_modules/react')
+            'angular' : path.resolve(__dirname, 'node_modules/angular')
         }
     },
     watchOptions: {
@@ -62,15 +67,16 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         commonConfig.indexPagePlugin,
+        new CopyWebpackPlugin([{
+          from: __dirname + '/angular/public'
+        }]),
         new webpack.optimize.CommonsChunkPlugin({
             children: true,
             async: true
         }),
         new webpack.ProvidePlugin({
-            'React':      'react',
             '$':          'jquery',
-            'jQuery':     'jquery',
-            'ReactDOM':   'react-dom'
+            'jQuery':     'jquery'
         }),
         new DashboardPlugin(dashboard.setData)
     ]
