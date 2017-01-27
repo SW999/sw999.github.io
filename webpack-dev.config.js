@@ -21,6 +21,10 @@ var devLoaders = [
     {
       test: /\.html$/,
       loader: 'raw-loader'
+    },
+    {
+        test: require.resolve('angular'),
+        loader: 'exports?window.angular'
     }
 ];
 
@@ -75,6 +79,7 @@ module.exports = {
             async: true
         }),
         new webpack.ProvidePlugin({
+            'angular':    'angular' ,
             '$':          'jquery',
             'jQuery':     'jquery'
         }),

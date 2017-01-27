@@ -1,9 +1,10 @@
-<main>
-  <h1 class="title">Hello from Angular !</h1>
-
-  <!-- Images (and assets) are parsed and loaded from within the public directory -->
-  <img src="./img/logo.png">
-</main>
-<footer>
-  <a ng-href="{{app.url}}">Webpack Angular Starter</a>
-</footer>
+<section ng-controller="AppCtrl">
+    <h1>Articles ({{app.articles.length}})</h1>
+    <article ng-repeat="(key, article) in app.articles">
+        <h3>{{article.title}}</h3>
+        <span>Author: {{article.author}}, date: <em>{{article.modified}}</em></span><br/>
+        <img ng-src="{{article.url}}"/>
+        <p>{{article.description}}</p>
+        <a ng-href="{{'/articles/' + article.alias}}">Read more...</a>
+    </article>
+</section>
