@@ -1,0 +1,10 @@
+<h1>Articles ({{articles.length}})</h1>
+
+<article ng-repeat="(key, article) in articles">
+  <h3>{{article.title}}</h3>
+  <span>Author: {{article.author}}, date: <em>{{article.modified}}</em></span><br/>
+  <img ng-src="{{article.url}}"/>
+
+  <p>{{article.description}}</p>
+  <a ng-href="{{'#!/article/' + article.alias}}">Read more...</a>
+</article>

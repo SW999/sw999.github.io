@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="app" lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Angular App</title>
@@ -8,7 +8,9 @@
 
   <base href="/">
 </head>
-<body>
-  <app></app>
+<body ng-app="app" >
+<section ng-controller="MainCtrl">
+  <app ng-view></app>
+</section>
 </body>
 </html>
