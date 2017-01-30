@@ -1,0 +1,20 @@
+<div data-click-enter="sendNewArticleForm()">
+  <h2>Add new article</h2>
+
+  <div>
+    <form name="addArticleForm">
+      <fieldset>
+        <p><label for="articleName">New name: </label>
+          <input type="text" id="articleName" ng-model="newarticle.name" required placeholder="Add name">
+        </p>
+
+        <p><label for="thumbImg">Add valid url to image: </label>
+          <input show-img="newArticleItem.imgUrl" type="url" id="thumbImg" name="thumbImg" ng-blur="validate(newarticle.url, addArticleForm)" ng-model="newarticle.url" required placeholder="Image url">
+        </p>
+      </fieldset>
+      <br>
+      <button id="sendButton" type="submit" ng-click="saveNewArticle(newarticle, addArticleForm)" ng-disabled="!addArticleForm.$valid">Save</button>
+      <button type="reset" ng-click="clearPreview()">Reset</button>
+    </form>
+  </div>
+</div>

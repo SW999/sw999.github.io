@@ -1,13 +1,16 @@
 import '../style/main.scss';
+import ngRoute from 'angular-route';
+import FormController from './components/addEditForm/FormController';
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [require('angular-route')])
+angular.module(MODULE_NAME, [ngRoute])
     .controller('MainCtrl', function ($scope, $route, $routeParams, $location) {
         $scope.$route = $route;
         $scope.$location = $location;
         $scope.$routeParams = $routeParams;
     })
+
     .controller('AppCtrl', function ($scope, $routeParams, articles) {
         $scope.name = 'ArticleController';
         $scope.params = $routeParams;
@@ -19,6 +22,7 @@ angular.module(MODULE_NAME, [require('angular-route')])
         $scope.params = $routeParams;
         $scope.article = JSON.parse(article.data.data);
     })
+
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
@@ -52,6 +56,10 @@ angular.module(MODULE_NAME, [require('angular-route')])
                         return deferred.promise;
                     }
                 }
+            })
+            .when('/add-new', {
+                template: require('./components/addEditForm/add-new.html'),
+                controller: FormController
             });
     });
 
