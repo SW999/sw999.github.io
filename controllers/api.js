@@ -31,7 +31,7 @@ exports.createNew = function(req, res) {
         url: req.body.url,
         modified: Date.now()
     });
-
+console.log(req.body);
     article.save(function (err, newArticle) {
         if (!err) {
             res.redirect("/articles/" + newArticle.alias);
@@ -41,7 +41,7 @@ exports.createNew = function(req, res) {
                 res.send({ error: 'Validation error new', art: req.body });
             } else {
                 res.statusCode = 500;
-                res.send({ error: 'Server error' });
+                res.status(500).send({ error: err.message });
             }
         }
     });

@@ -1,21 +1,31 @@
 <article ng-controller="FormController">
-    <div class="edit-page" data-click-enter="sendNewArticleForm()">
-        <h3>Add new article</h3>
-        <form name="addArticleForm" class="form">
-            <fieldset>
-                <div class="input"><label for="articleName">New name: </label>
-                    <input type="text" id="articleName" ng-model="newarticle.name" required placeholder="Add name">
-                </div>
+  <div class="edit-page">
+    <h3>Add new article</h3>
 
-                <div class="input"><label for="thumbImg">Add valid url to image: </label>
-                    <input show-img="newArticleItem.imgUrl" type="text" id="thumbImg" name="thumbImg" ng-blur="validate(newarticle.url, addArticleForm)" ng-model="newarticle.url" required placeholder="Image url">
-                </div>
-            </fieldset>
-            <br/>
-            <div class="actions">
-                <input id="sendButton" type="submit" ng-click="saveNewArticle(newarticle, addArticleForm)" ng-disabled="!addArticleForm.$valid" value="Save"/>
-                <input type="reset" ng-click="clearPreview()" value="Reset"/>
-            </div>
-        </form>
-    </div>
+    <form name="addArticleForm" class="form">
+      <div class="input">
+        <label for="author">Author</label>
+        <input id="author" type="text" name="author" ng-model="newarticle.author" placeholder="Tape Your name"/>
+      </div>
+      <div class="input">
+        <label for="url">Img url</label>
+        <input id="url" type="text" name="url" ng-model="newarticle.url" ng-required=true placeholder="http://path-to-img.jpg"/>
+      </div>
+      <div class="input">
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title" ng-change="validate(newarticle.title, addArticleForm)" ng-model="newarticle.title" placeholder="New article title"/>
+      </div>
+      <div class="input">
+        <label for="description">Description</label>
+        <input id="description" type="text" ng-model="newarticle.description" name="description" placeholder="Short description"/>
+      </div>
+      <div class="input">
+        <label for="content">Content</label>
+        <textarea id="content" ng-change="validate(newarticle.content, addArticleForm)" ng-minlength=20 ng-required=true name="content" cols="40" rows="5" ng-model="newarticle.content" placeholder="Main content"></textarea>
+      </div>
+      <div class="actions">
+        <input id="sendButton" type="submit" ng-click="saveNewArticle(newarticle, addArticleForm)" ng-disabled="!addArticleForm.$valid" value="Save"/>
+      </div>
+    </form>
+  </div>
 </article>

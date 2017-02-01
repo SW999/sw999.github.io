@@ -16,39 +16,39 @@ angular.module(MODULE_NAME, [ngRoute])
         };
 
         $scope.newArticleItem = {
-            name: "",
-            imgUrl: "",
-            rate: 0,
-            postedBy: ""
+            author: "",
+            url: "",
+            title: "",
+            description: "",
+            content: ""
         };
 
-/*        $scope.articleList = [];
+        $scope.articleList = [];
 
-        $http.get('data/articleList.json').success(function (data, status, headers, config) {
-            $scope.articleList = JSON.parse(data.article);
-        }).error(function (data, status, headers, config) {
-            console.log("Something wrong: " + data);
-        });*/
-
-/*        $scope.saveNewArticle = function (newarticle, addArticleForm) {
-            var articleList;
+        $scope.saveNewArticle = function (newarticle, addArticleForm) {
+            let articleList = '';
 
             if (addArticleForm.$valid) {
-                $scope.newArticleItem.name = newarticle.name;
+                $scope.newArticleItem.author = newarticle.author;
+                $scope.newArticleItem.url = newarticle.url;
+                $scope.newArticleItem.description = newarticle.description;
+
                 $scope.articleList.push($scope.newArticleItem);
-                articleList = "article=" + angular.toJson($scope.articleList);
-                alert(articleList);
-                $http.post('jsonparse.php', articleList, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).success(function (data, status) {
-                    console.log(data);
-                }).error(function (data, status) {
-                    console.log("Something wrong: " + data);
-                });
+                articleList = angular.toJson($scope.articleList);
+                $http.post('http://localhost:2992/api/', articleList, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+                    .then(function (data) {
+                        console.log(data);
+                    }, function (data) {
+                        console.log("Something wrong: " + data);
+                    }
+                );
             }
-        };*/
+        };
 
         $scope.validate = function (newarticle, addArticleForm) {
-            if (addArticleForm.thumbImg.$valid) {
-                $scope.newArticleItem.imgUrl = newarticle;
+            if(addArticleForm.title.$valid && addArticleForm.content.$valid) {
+                $scope.newArticleItem.title = newarticle.title;
+                $scope.newArticleItem.content = newarticle.content;
             }
         };
     }])

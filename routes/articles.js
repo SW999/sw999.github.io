@@ -6,7 +6,7 @@ app.get('/', api.allArticles);
 
 app.get('/:alias', api.showArticle);
 
-app.post('/:alias', api.createNew);
+app.post('/', api.createNew);
 
 app.put('/:alias', api.updateArticle);
 
