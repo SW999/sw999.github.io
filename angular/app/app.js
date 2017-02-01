@@ -1,6 +1,5 @@
 import '../style/main.scss';
 import ngRoute from 'angular-route';
-import FormController from './components/addEditForm/FormController';
 
 const MODULE_NAME = 'app';
 
@@ -10,6 +9,49 @@ angular.module(MODULE_NAME, [ngRoute])
         $scope.$location = $location;
         $scope.$routeParams = $routeParams;
     })
+
+    .controller('FormController', ['$scope', '$http', function ($scope, $http) {
+        $scope.preferences = {
+            showImage: false
+        };
+
+        $scope.newArticleItem = {
+            name: "",
+            imgUrl: "",
+            rate: 0,
+            postedBy: ""
+        };
+
+/*        $scope.articleList = [];
+
+        $http.get('data/articleList.json').success(function (data, status, headers, config) {
+            $scope.articleList = JSON.parse(data.article);
+        }).error(function (data, status, headers, config) {
+            console.log("Something wrong: " + data);
+        });*/
+
+/*        $scope.saveNewArticle = function (newarticle, addArticleForm) {
+            var articleList;
+
+            if (addArticleForm.$valid) {
+                $scope.newArticleItem.name = newarticle.name;
+                $scope.articleList.push($scope.newArticleItem);
+                articleList = "article=" + angular.toJson($scope.articleList);
+                alert(articleList);
+                $http.post('jsonparse.php', articleList, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}).success(function (data, status) {
+                    console.log(data);
+                }).error(function (data, status) {
+                    console.log("Something wrong: " + data);
+                });
+            }
+        };*/
+
+        $scope.validate = function (newarticle, addArticleForm) {
+            if (addArticleForm.thumbImg.$valid) {
+                $scope.newArticleItem.imgUrl = newarticle;
+            }
+        };
+    }])
 
     .controller('AppCtrl', function ($scope, $routeParams, articles) {
         $scope.name = 'ArticleController';
@@ -59,7 +101,7 @@ angular.module(MODULE_NAME, [ngRoute])
             })
             .when('/add-new', {
                 template: require('./components/addEditForm/add-new.html'),
-                controller: FormController
+                controller: 'FormController'
             });
     });
 

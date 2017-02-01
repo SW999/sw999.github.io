@@ -154,8 +154,9 @@ article {
 }
 
 .form {
-  input[type="submit"] {
-    display: block;
+  input[type="submit"],
+  input[type="reset"] {
+    display: inline-block;
     padding: 1rem 2rem;
     border-radius: 1rem;
     color: #fff;
@@ -172,6 +173,11 @@ article {
     border-image-source: initial;
     border-image-slice: initial;
     border-image-repeat: initial;
+
+    &[disabled='disabled'] {
+      background-image: linear-gradient(to bottom, #ccc, #868686);
+      cursor: not-allowed;
+    }
   }
 
   .input {
@@ -200,5 +206,12 @@ article {
 
   .actions {
     margin: 1.5rem 0 0 11rem;
+  }
+
+  fieldset {
+    width: 60%;
+    padding: 4rem 2rem;
+    border-color: #868686;
+    border-radius: .3rem;
   }
 }
