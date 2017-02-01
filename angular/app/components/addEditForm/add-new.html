@@ -9,11 +9,11 @@
       </div>
       <div class="input">
         <label for="url">Img url</label>
-        <input id="url" type="text" name="url" ng-model="newarticle.url" ng-required=true placeholder="http://path-to-img.jpg"/>
+        <input id="url" type="text" name="url" ng-model="newarticle.url" placeholder="http://path-to-img.jpg"/>
       </div>
       <div class="input">
         <label for="title">Title</label>
-        <input id="title" type="text" name="title" ng-change="validate(newarticle.title, addArticleForm)" ng-model="newarticle.title" placeholder="New article title"/>
+        <input id="title" type="text" name="title" ng-change="validate(newarticle.title, addArticleForm)" ng-required=true ng-model="newarticle.title" placeholder="New article title"/>
       </div>
       <div class="input">
         <label for="description">Description</label>

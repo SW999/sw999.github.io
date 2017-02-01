@@ -31,10 +31,10 @@ exports.createNew = function(req, res) {
         url: req.body.url,
         modified: Date.now()
     });
-console.log(req.body);
+
     article.save(function (err, newArticle) {
         if (!err) {
-            res.redirect("/articles/" + newArticle.alias);
+            res.status(200).send({ ok: 'New article was created' });
         } else {
             if(err.name == 'ValidationError') {
                 res.statusCode = 400;

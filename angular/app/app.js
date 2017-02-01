@@ -10,7 +10,7 @@ angular.module(MODULE_NAME, [ngRoute])
         $scope.$routeParams = $routeParams;
     })
 
-    .controller('FormController', ['$scope', '$http', function ($scope, $http) {
+    .controller('FormController', ['$scope', '$http', '$httpParamSerializer', function ($scope, $http, $httpParamSerializer) {
         $scope.preferences = {
             showImage: false
         };
@@ -32,10 +32,12 @@ angular.module(MODULE_NAME, [ngRoute])
                 $scope.newArticleItem.author = newarticle.author;
                 $scope.newArticleItem.url = newarticle.url;
                 $scope.newArticleItem.description = newarticle.description;
+                $scope.newArticleItem.title = newarticle.title;
+                $scope.newArticleItem.content = newarticle.content;
 
                 $scope.articleList.push($scope.newArticleItem);
                 articleList = angular.toJson($scope.articleList);
-                $http.post('http://localhost:2992/api/', articleList, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+                $http.post('http://localhost:2992/api/', $httpParamSerializer($scope.newArticleItem), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
                     .then(function (data) {
                         console.log(data);
                     }, function (data) {
@@ -46,9 +48,11 @@ angular.module(MODULE_NAME, [ngRoute])
         };
 
         $scope.validate = function (newarticle, addArticleForm) {
-            if(addArticleForm.title.$valid && addArticleForm.content.$valid) {
-                $scope.newArticleItem.title = newarticle.title;
-                $scope.newArticleItem.content = newarticle.content;
+            if(addArticleForm.title.$valid) {
+                return $scope.newArticleItem.title = newarticle.title;
+            }
+            if(addArticleForm.content.$valid) {
+                return $scope.newArticleItem.content = newarticle.content;
             }
         };
     }])
