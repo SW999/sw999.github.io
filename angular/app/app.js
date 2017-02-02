@@ -1,6 +1,8 @@
 import '../style/main.scss';
 import ngRoute from 'angular-route';
 
+import formController from './components/addEditForm/formController';
+
 const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, [ngRoute])
@@ -10,52 +12,7 @@ angular.module(MODULE_NAME, [ngRoute])
         $scope.$routeParams = $routeParams;
     })
 
-    .controller('FormController', ['$scope', '$http', '$httpParamSerializer', function ($scope, $http, $httpParamSerializer) {
-        $scope.preferences = {
-            showImage: false
-        };
-
-        $scope.newArticleItem = {
-            author: "",
-            url: "",
-            title: "",
-            description: "",
-            content: ""
-        };
-
-        $scope.articleList = [];
-
-        $scope.saveNewArticle = function (newarticle, addArticleForm) {
-            let articleList = '';
-
-            if (addArticleForm.$valid) {
-                $scope.newArticleItem.author = newarticle.author;
-                $scope.newArticleItem.url = newarticle.url;
-                $scope.newArticleItem.description = newarticle.description;
-                $scope.newArticleItem.title = newarticle.title;
-                $scope.newArticleItem.content = newarticle.content;
-
-                $scope.articleList.push($scope.newArticleItem);
-                articleList = angular.toJson($scope.articleList);
-                $http.post('http://localhost:2992/api/', $httpParamSerializer($scope.newArticleItem), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
-                    .then(function (data) {
-                        console.log(data);
-                    }, function (data) {
-                        console.log("Something wrong: " + data);
-                    }
-                );
-            }
-        };
-
-        $scope.validate = function (newarticle, addArticleForm) {
-            if(addArticleForm.title.$valid) {
-                return $scope.newArticleItem.title = newarticle.title;
-            }
-            if(addArticleForm.content.$valid) {
-                return $scope.newArticleItem.content = newarticle.content;
-            }
-        };
-    }])
+    .controller('formController', formController)
 
     .controller('AppCtrl', function ($scope, $routeParams, articles) {
         $scope.name = 'ArticleController';
@@ -105,7 +62,7 @@ angular.module(MODULE_NAME, [ngRoute])
             })
             .when('/add-new', {
                 template: require('./components/addEditForm/add-new.html'),
-                controller: 'FormController'
+                controller: formController
             });
     });
 

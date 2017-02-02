@@ -1,4 +1,4 @@
-<article ng-controller="FormController">
+<article ng-controller="formController">
   <div class="edit-page">
     <h3>Add new article</h3>
 
@@ -13,7 +13,7 @@
       </div>
       <div class="input">
         <label for="title">Title</label>
-        <input id="title" type="text" name="title" ng-change="validate(newarticle.title, addArticleForm)" ng-required=true ng-model="newarticle.title" placeholder="New article title"/>
+        <input id="title" type="text" name="title" ng-required=true ng-model="newarticle.title" placeholder="New article title"/>
       </div>
       <div class="input">
         <label for="description">Description</label>
@@ -21,7 +21,7 @@
       </div>
       <div class="input">
         <label for="content">Content</label>
-        <textarea id="content" ng-change="validate(newarticle.content, addArticleForm)" ng-minlength=20 ng-required=true name="content" cols="40" rows="5" ng-model="newarticle.content" placeholder="Main content"></textarea>
+        <textarea id="content" ng-required=true name="content" cols="40" rows="5" ng-change="validate(newarticle, addArticleForm)" content ng-model="newarticle.content" placeholder="Main content"></textarea>
       </div>
       <div class="actions">
         <input id="sendButton" type="submit" ng-click="saveNewArticle(newarticle, addArticleForm)" ng-disabled="!addArticleForm.$valid" value="Save"/>
