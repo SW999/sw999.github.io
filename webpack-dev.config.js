@@ -3,9 +3,9 @@ var webpack = require('webpack');
 var path = require('path');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var Dashboard = require('webpack-dashboard');
-var DashboardPlugin = require('webpack-dashboard/plugin');
-var dashboard = new Dashboard();
+var ENV = process.env.npm_lifecycle_event;
+var isTest = ENV === 'test' || ENV === 'test-watch';
+var isDev = ENV === 'build';
 
 var devLoaders = [
     {
@@ -16,7 +16,7 @@ var devLoaders = [
     {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loader: "style!css?sourceMap!sass?sourceMap"
+        loader: isTest ? "null-loader" : "style!css?sourceMap!sass?sourceMap"
     },
     {
       test: /\.html$/,
@@ -28,25 +28,44 @@ var devLoaders = [
     }
 ];
 
+// ISTANBUL LOADER
+// https://github.com/deepsweet/istanbul-instrumenter-loader
+// Instrument JS files with istanbul-lib-instrument for subsequent code coverage reporting
+// Skips node_modules and files that end with .test
+if (isTest) {
+    devLoaders.push({
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: [
+            /node_modules/,
+            /\.spec\.js$/
+        ],
+        loader: 'istanbul-instrumenter-loader',
+        query: {
+            esModules: true
+        }
+    })
+}
+
 module.exports = {
-    entry: {
+    entry: isTest ? void 0 : {
         app: [
             'webpack-dev-server/client?http://localhost:3000',
             'webpack/hot/only-dev-server',
             './angular/app/app.js'
         ]
     },
-    output: {
+    output: isTest ? {} : {
         path: __dirname + '/public',
         publicPath: 'http://localhost:3000/',
         filename: 'bundle.[hash].js'
     },
-    externals: [],
-    devtool: 'cheap-eval-source-map',
+    devtool: 'eval',
     devServer: {
         hot: true,
         quiet: true,
-        contentBase: './angular/public'
+        contentBase: './angular/public',
+        stats: 'minimal'
     },
     module: {
         loaders: commonConfig.loaders.concat(devLoaders)
@@ -66,7 +85,7 @@ module.exports = {
         maxBundleSize: 250,
         warnAtPercent: 80
     },
-    plugins: [
+    plugins: isTest ? [] : [
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
@@ -82,7 +101,6 @@ module.exports = {
             'angular':    'angular' ,
             '$':          'jquery',
             'jQuery':     'jquery'
-        }),
-        new DashboardPlugin(dashboard.setData)
+        })
     ]
 };

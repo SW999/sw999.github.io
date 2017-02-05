@@ -34,3 +34,11 @@ Locall URl will be:
 ```shell
 http://localhost:3000/
 ```
+
+
+## Testing
+
+#### 1. Unit Tests
+
+* single run: `npm test`
+* live mode (TDD style): `npm run test-watch`
