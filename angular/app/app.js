@@ -1,7 +1,9 @@
 import '../style/main.scss';
 import ngRoute from 'angular-route';
 
-import formController from './components/addEditForm/formController';
+import formController from './controllers/addEditForm/formController';
+import articlesController from './controllers/articlesPage/articlesController';
+import articleController from './controllers/articlePage/articleController';
 
 const MODULE_NAME = 'app';
 
@@ -14,23 +16,15 @@ angular.module(MODULE_NAME, [ngRoute])
 
     .controller('formController', formController)
 
-    .controller('AppCtrl', function ($scope, $routeParams, articles) {
-        $scope.name = 'ArticleController';
-        $scope.params = $routeParams;
-        $scope.articles = JSON.parse(articles.data.data);
-    })
+    .controller('articlesController', articlesController)
 
-    .controller('ArticleController', function ($scope, $routeParams, article) {
-        $scope.name = 'ArticleController';
-        $scope.params = $routeParams;
-        $scope.article = JSON.parse(article.data.data);
-    })
+    .controller('articleController', articleController)
 
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                template: require('./articles.html'),
-                controller: 'AppCtrl',
+                template: require('./controllers/articlesPage/articles.html'),
+                controller: 'articlesController',
                 resolve: {
                     articles: function ($q, $http) {
                         let deferred = $q.defer();
@@ -45,8 +39,8 @@ angular.module(MODULE_NAME, [ngRoute])
                 }
             })
             .when('/article/:alias', {
-                template: require('./article.html'),
-                controller: 'ArticleController',
+                template: require('./controllers/articlePage/article.html'),
+                controller: 'articleController',
                 resolve: {
                     article: function ($q, $http, $location) {
                         let deferred = $q.defer();
@@ -61,7 +55,7 @@ angular.module(MODULE_NAME, [ngRoute])
                 }
             })
             .when('/add-new', {
-                template: require('./components/addEditForm/add-new.html'),
+                template: require('./controllers/addEditForm/add-new.html'),
                 controller: formController
             });
     });
