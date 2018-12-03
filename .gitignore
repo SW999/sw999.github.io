@@ -1,2 +1,4 @@
 .idea
 node_modules
+projects/json-to-mockup/asset-manifest.json
+projects/json-to-mockup/*.js
