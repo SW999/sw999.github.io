@@ -2,8 +2,8 @@
 
 	$R.compileTime = '1304957970';
 
-	$R.path = 'http://readable.tastefulwords.com/';
-	$R.linksPath = 'http://readable.tastefulwords.com/';
+	$R.path = 'https://sw999.github.io/projects/temp/';
+	$R.linksPath = 'https://sw999.github.io/projects/temp/';
 
 	$R.win = window;
 
@@ -69,7 +69,7 @@
 
 		+		'<div id="bodyContent"></div>'
 
-		+		'<scr'+'ipt type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></scr'+'ipt>'
+		+		'<scr'+'ipt type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></scr'+'ipt>'
 
 		+		($R.embedded && ($R.embeddedOptions['script'] > '') ? 
 				'<scr'+'ipt type="text/javascript" src="'+$R.embeddedOptions['script']+'"></scr'+'ipt>' : '')
