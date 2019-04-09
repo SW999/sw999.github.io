@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline
+}
+
+html {
+  line-height: 1
+}
+
+.no-scroll {
+  overflow: hidden;
+  background-color: #fff8dc;
+  font-size: 12px;
+  font-size: 0.75rem
+}
+
+
+@keyframes radius-animation {
+  0% {
+    border-radius: 0%
+  }
+  25% {
+    background-color: gold
+  }
+  50% {
+    border-radius: 25%
+  }
+  75% {
+    background-color: #32cd32
+  }
+  100% {
+    border-radius: 0%
+  }
+}
+
+@keyframes infinite-spinning {
+  from {
+    transform: rotateY(0deg)
+  }
+  to {
+    transform: rotateY(180deg)
+  }
+}
+
+.scene {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  height: 600px;
+  margin-top: -250px;
+  perspective: 600px
+}
+
+.pyramid {
+  position: relative;
+  width: inherit;
+  height: inherit;
+  transform: translateZ(0);
+  transform-style: preserve-3d;
+  animation: infinite-spinning 4s linear infinite 0ms
+}
+
+.pyramid div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: .7;
+  border: 2px solid silver;
+  transform: rotateX(90deg) translate3d(-50%, 0, -70px);
+  backface-visibility: hidden;
+  animation: radius-animation 9s linear infinite 0ms
+}
+
+.pyramid div:nth-child(1) {
+  width: 90%;
+  height: 90%;
+  background-color: #191970
+}
+
+.pyramid div:nth-child(2) {
+  width: 80%;
+  height: 80%;
+  background-color: navy
+}
+
+.pyramid div:nth-child(3) {
+  width: 70%;
+  height: 70%;
+  background-color: #00008b
+}
+
+.pyramid div:nth-child(4) {
+  width: 60%;
+  height: 60%;
+  background-color: #0000cd
+}
+
+.pyramid div:nth-child(5) {
+  width: 50%;
+  height: 50%;
+  background-color: blue
+}
+
+.pyramid div:nth-child(6) {
+  width: 40%;
+  height: 40%;
+  background-color: #4169e1
+}
+
+.pyramid div:nth-child(7) {
+  width: 30%;
+  height: 30%;
+  background-color: #1e90ff
+}
+
+.pyramid div:nth-child(8) {
+  width: 20%;
+  height: 20%;
+  background-color: #6495ed
+}
+
+.pyramid div:nth-child(9) {
+  width: 10%;
+  height: 10%;
+  background-color: #00bfff
+}
+
+.pyramid div:nth-child(10) {
+  width: 1%;
+  height: 1%;
+  background-color: #87cefa
+}
+
+.pyramid:hover,
+.pyramid:hover div {
+  animation-play-state: paused;
+  cursor: pointer
+}
+
+.pyramid:active,
+.pyramid:active div {
+  animation-direction: reverse;
+  cursor: pointer
+}
