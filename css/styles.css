@@ -23,6 +23,11 @@ body {
   background-color: lightgreen;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 .page-footer {
   margin-top: auto;
   padding: 2rem;
@@ -111,4 +116,21 @@ nav ul a:hover {
 .menu-toggle.on > span:before,
 .menu-toggle.on > span:after {
   transform: rotate(90deg);
+}
+.title-section {
+  max-height: 1000px;
+  text-align: center;
+  transition: all .2s ease;
+}
+.title-section h1 {
+  margin: 60px 0 30px 0;
+  color: #fff;
+  font-family: "Segoe UI";
+  font-size: 50px;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.hide {
+  max-height: 0;
+  overflow: hidden;
 }
