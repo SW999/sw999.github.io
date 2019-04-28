@@ -1,10 +1,12 @@
 (function() {
   var myImgs,
-      clouds = document.querySelector('#clouds'),
+      clouds = document.getElementById('clouds'),
       audio = document.getElementById('audio'),
+      wrapper = document.getElementById('wrapper'),
       len,
-      W = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
-      H = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
+      domRect = document.body.getBoundingClientRect(),
+      W = domRect.width,
+      H = domRect.height,
       hW = W/2, // The variable need in order not perform calculations in a loop
       hH = H/2,
       /* The animation max step. Variable need to multilayer shape is not torn when driving.
@@ -18,30 +20,35 @@
   });
 
   function setTranslate(el, x, y) {
-    el.style['transform'] = 'translate3d(' + x +'px, ' + y + 'px, 0)';
+    el.style.transform = 'translate3d(' + x +'px, ' + y + 'px, 0)';
   }
 
-  function getTranslate(obj) {
-    if(!window.getComputedStyle) return;
+  function getTranslation(obj) {
+    if (!getComputedStyle(obj)) {
+      return;
+    }
+
     var style = getComputedStyle(obj),
       transform = style.transform,
-      mat = transform.match(/^matrix3d\((.+)\)$/);
-    if(mat) {
+      translation = transform.match(/^matrix\((.+)\)$/),
+      translationArr;
+
+    if (translation) {
+      translationArr = translation[1].split(', ');
       return {
-        x: parseFloat(mat[0].split(', ')[12]),
-        y: parseFloat(mat[1].split(', ')[13])
+        x: ~~ translationArr[4],
+        y: ~~ translationArr[5]
       }
     }
-    mat = transform.match(/^matrix\((.+)\)$/);
+
     return {
-      x: mat ? parseFloat(mat[0].split(', ')[4]) : 0,
-      y: mat ? parseFloat(mat[1].split(', ')[5]) : 0
+      x: 0,
+      y: 0
     }
   }
 
   function loadImage(elem, ln, fn) {
-    var el = document.querySelector(elem),
-      fragment = document.createDocumentFragment(),
+    var fragment = document.createDocumentFragment(),
       count = 0,
       img = {},
       onImgLoad = function () {
@@ -58,22 +65,22 @@
       img[i].onload = onImgLoad;
       img[i].src = 'img/slide' + (i+1) + '.png';
     }
-    el.appendChild(fragment);
-    myImgs = document.querySelectorAll('#wrapper .layer');
+    elem.appendChild(fragment);
+    myImgs = wrapper.querySelectorAll('.layer');
     len = ln;
   }
 
-  function mover() {
+  function doStep() {
     var dx, dy, tg;
     // Don't do the calculations if the coordinates are the same
     if (destination_x !== current_x && destination_y !== current_y) {
       for (var i = 0; i < len; i += 1) {
-        var current_x = getTranslate(myImgs[i]).x,
-            current_y = getTranslate(myImgs[i]).y;
+        var current_x = getTranslation(myImgs[i]).x,
+            current_y = getTranslation(myImgs[i]).y;
 
         // If this is not the top layer
         if (i !== len - 1) {
-          setTranslate(myImgs[i], getTranslate(myImgs[i+1]).x, getTranslate(myImgs[i+1]).y); // using coordinates higher layer
+          setTranslate(myImgs[i], getTranslation(myImgs[i+1]).x, getTranslation(myImgs[i+1]).y); // using coordinates higher layer
         } else { // The top layer
           dx = Math.abs(current_x - destination_x); // absolute value of the difference between the coordinates
           dy = Math.abs(current_y - destination_y);
@@ -112,7 +119,7 @@
     }
       /* Repeated using a function call to complete the movement,
          it means that all layers should be arranged strictly one above the other */
-      requestAnimationFrame(mover);
+      requestAnimationFrame(doStep);
   }
 
   // Get the coordinates of the cursor after the move
@@ -122,18 +129,15 @@
   }
 
   function init() {
-    document.body.setAttribute("style","width: " + W + "px; height: " + H + "px;"); // Remove the scroll bars
     document.body.classList.remove('load');
-    //document.getElementById('audio').play();
 
     // Remove an invisible block, add an event listener and start animation
-    var interval = setTimeout(function() {
+    setTimeout(function() {
       clouds.parentNode.removeChild(clouds);
-      mover();
+      doStep();
       document.addEventListener('mousemove', mousePos, false);
-      clearTimeout(interval);
     }, 14000);
   }
 
-  loadImage('#wrapper', 43, init);
+  loadImage(wrapper, 43, init);
 })();
