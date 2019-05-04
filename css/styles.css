@@ -26,6 +26,7 @@ body {
 img {
   max-width: 100%;
   height: auto;
+  vertical-align: bottom;
 }
 
 .page-footer {
@@ -41,21 +42,27 @@ nav ul {
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   list-style: none;
-  text-align: center;
+  text-align: left;
 }
 
 nav ul.hidden {
   display: none;
 }
 
-nav ul a {
+nav a {
   display: block;
   width: 100%;
+  padding-left: 5vw;
   color: white;
   font-size: 4.8rem;
   line-height: 1.5;
   text-decoration: none;
   transition-duration: .5s;
+}
+
+nav .tags {
+  color: #77d45b;
+  font-size: 70%;
 }
 
 nav ul a:hover {
@@ -78,6 +85,7 @@ nav ul a:hover {
   width: 4rem;
   height: 3rem;
   cursor: pointer;
+  animation: pulse .6s 3;
 }
 
 .menu-toggle > span,
@@ -129,8 +137,26 @@ nav ul a:hover {
   font-size: 50px;
   text-shadow: 1px 1px 1px #000;
 }
+.title-section img {
+  max-height: 70vh;
+  width: auto;
+}
 
 .hide {
   max-height: 0;
   overflow: hidden;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.09, 1.09, 1.09);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
 }
