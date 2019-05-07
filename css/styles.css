@@ -23,6 +23,13 @@ body {
   background-color: lightgreen;
 }
 
+/* bullshit for mobile Google Chrome */
+@supports (-webkit-appearance:none) {
+  .os-android {
+    min-height: calc(100vh - 56px);
+  }
+}
+
 img {
   max-width: 100%;
   height: auto;
