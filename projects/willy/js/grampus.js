@@ -17,6 +17,7 @@
 
   audio.addEventListener("canplay", function() {
     audio.play();
+    audio.volume = 0.25;
   });
 
   function setTranslate(el, x, y) {
