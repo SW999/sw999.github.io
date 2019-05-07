@@ -30,10 +30,11 @@ img {
 }
 
 .page-content {
-  flex: 1;
+  flex: 1 0 auto;
 }
 
 .page-footer {
+  flex-shrink: 0;
   padding: 2rem;
   color: #fff;
   font-family: 'freight-text-pro', Georgia, Cambria, 'Times New Roman', Times, serif;
