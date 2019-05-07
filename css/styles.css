@@ -52,9 +52,9 @@ nav ul.hidden {
 nav a {
   display: block;
   width: 100%;
-  padding-left: 5vw;
+  padding-left: 5px;
   color: white;
-  font-size: 4.8rem;
+  font-size: 1.6rem;
   line-height: 1.5;
   text-decoration: none;
   transition-duration: .5s;
@@ -125,26 +125,54 @@ nav ul a:hover {
 .menu-toggle.on > span:after {
   transform: rotate(90deg);
 }
+
 .title-section {
   max-height: 1000px;
   text-align: center;
   transition: all .2s ease;
 }
+
 .title-section h1 {
-  margin: 60px 0 30px 0;
+  margin: 2rem 0 1rem 0;
   color: #fff;
-  font-family: "Segoe UI";
-  font-size: 50px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 2rem;
   text-shadow: 1px 1px 1px #000;
 }
+
 .title-section img {
   max-height: 70vh;
   width: auto;
+  max-width: 30rem;
 }
 
 .hide {
   max-height: 0;
   overflow: hidden;
+}
+
+@media (min-width: 765px) {
+  .title-section h1 {
+    margin: 6rem 0 3rem 0;
+    font-size: 5rem;
+  }
+
+  .title-section img {
+    max-width: none;
+  }
+
+  nav ul {
+    margin: 2rem auto;
+  }
+
+  nav a {
+    padding-left: 5vw;
+    font-size: 4.8rem;
+  }
+
+  nav .tags {
+    font-size: 60%;
+  }
 }
 
 @keyframes pulse {
