@@ -561,7 +561,7 @@ $(
 		'Bevan',
 		'Buda',
 		'Cabin',
-		'Cantarell',
+		'Lexend Deca',
 		'Coda',
 		'Cuprum',
 		'Droid Sans',
