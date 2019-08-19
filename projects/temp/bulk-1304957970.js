@@ -374,7 +374,7 @@ $(
 			$('#baseCSS').remove();
 			
 			//	append
-			$('head').append('<link id="baseCSS" rel="stylesheet" href="'+$R.path+'base-'+_applyOptions['base']+'-'+$R.compileTime+'.css'+'" type="text/css" />');
+			$('head').append('<link id="baseCSS" rel="stylesheet" href="'+$R.path+'base-'+_applyOptions['base']+'.css'+'" type="text/css" />');
 		}
 		
 		if (_resetOptions)
