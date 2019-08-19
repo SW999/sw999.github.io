@@ -2260,8 +2260,7 @@ $(
 				'base': 				'b',
 			},
 			_log_options_string = '',
-			_custom_css_string = '',
-			_log_url = ''
+			_custom_css_string = ''
 		;
 
 		//	cosntruct options string
@@ -2270,31 +2269,6 @@ $(
 				_log_options_string += "[[="+_shortcuts[_option]+": "+$R.options[_option]+"]]";
 			}
 		}
-
-		//	construct url
-		_log_url = ''
-			+ $R.linksPath+'log.js?'
-			+ 'rand=' 		+ encodeURIComponent(Math.random())
-			+ '&url=' 		+ encodeURIComponent($R.win.location.href)
-			+ '&options=' 	+ encodeURIComponent(_log_options_string)
-			+ '&customCSS=' + encodeURIComponent($R.options['custom_css'])
-		;
-	
-		//	wait 2500 seonds
-		window.setTimeout
-		(
-			function ()
-			{
-				//	create
-				var	_script = document.createElement('script');
-					_script.setAttribute('src', _log_url);
-				
-				//	will not actually show up in the document
-				//	jQuery does stuff with scripts
-				$('body').append(_script);
-			}, 
-			2500
-		);
 		
 		//	check to see if using custom theme
 		//	and propose another theme
