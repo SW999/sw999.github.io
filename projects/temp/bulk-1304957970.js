@@ -440,7 +440,6 @@ $(
 						'font-family: [=text_font_header]; ')
 				+	'} '
 
-				+	'pre { background-color: [=color_background]; } '
 				+	'pre, code { font-family: [=text_font_monospace]; } '
 				+	'hr { border-color: [=color_text]; } '
 
