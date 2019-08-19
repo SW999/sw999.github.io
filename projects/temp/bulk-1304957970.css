@@ -183,6 +183,7 @@ pre {
     word-break: break-all;
     padding: 17px 20px 20px;
     border: 1px solid #e5e8ec;
+    border-radius: 3px;
     background: #e6e8ea;
     white-space: pre-wrap;
 }
