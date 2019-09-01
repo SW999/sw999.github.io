@@ -43,8 +43,8 @@
   function createMap() {
     var fragment = document.createDocumentFragment(),
       count = 0;
-    world.map.forEach(function(v,i) {
-      world.map.forEach(function(v1,j) {
+    world.map.forEach(function (v, i) {
+      world.map.forEach(function (v1, j) {
         var block,
           mapEl = world.map[i][j],
           personStatus = world.person[i][j];
@@ -93,7 +93,7 @@
     // После каждого хода проверяем на "выигрыш".
     // Если хоть в одной выигрышной позиции нет персонажа,
     // прерываем проверку. Иначе - уровень пройден.
-    return winComb.some(function(v,i) {
+    return winComb.some(function (v, i) {
       return world.person[winComb[i][0]][winComb[i][1]] === 0;
     }) ? false : levelComplete();
   }
@@ -101,7 +101,13 @@
   function levelComplete() {
     console.log('You win!'); // TODO: добавить сообщение и возможность перехода на новый уровень
     var kenny = document.querySelector('#slacker2');
+    var angel = document.querySelector('.angel');
+    angel.style.top = kenny.offsetTop + 'px';
+    angel.style.left = kenny.offsetLeft + 'px';
+
     kenny.classList.add('dead');
+    angel.classList.add('show');
+
     document.querySelector('audio').play();
   }
 
@@ -147,7 +153,7 @@
     var code = e.which,
       newPos,
       x, y,
-      auxiliaryFunc = function() {
+      auxiliaryFunc = function () {
         world.person[y][x] = 0;
         gameStatus();
       },
@@ -161,7 +167,7 @@
           var leftPos = world.person[y][x];
           newPos = parseInt(manager.el.style.left, 10) - stepSize + 'px';
           if (leftPos && world.map[y][x - 1] && !world.person[y][x - 1]) {
-            param = {id: leftPos, prevPos: [y, x], curPos: [y, x - 1]};
+            param = { id: leftPos, prevPos: [y, x], curPos: [y, x - 1] };
             prevStatus(param);
             leftPos.style.left = (parseInt(leftPos.style.left, 10) - stepSize) + 'px';
             world.person[y][x - 1] = leftPos;
@@ -182,7 +188,7 @@
           var topPos = world.person[y][x];
           newPos = parseInt(manager.el.style.top, 10) - stepSize + 'px';
           if ((y + 1) > 1 && topPos && world.map[y - 1][x] && !world.person[y - 1][x]) {
-            param = {id: topPos, prevPos: [y, x], curPos: [y - 1, x]};
+            param = { id: topPos, prevPos: [y, x], curPos: [y - 1, x] };
             prevStatus(param);
             topPos.style.top = (parseInt(topPos.style.top, 10) - stepSize) + 'px';
             world.person[y - 1][x] = topPos;
@@ -203,7 +209,7 @@
           var rightPos = world.person[y][x];
           newPos = parseInt(manager.el.style.left, 10) + stepSize + 'px';
           if (rightPos && world.map[y][x + 1] && !world.person[y][x + 1]) {
-            param = {id: rightPos, prevPos: [y, x], curPos: [y, x + 1]};
+            param = { id: rightPos, prevPos: [y, x], curPos: [y, x + 1] };
             prevStatus(param);
             rightPos.style.left = (parseInt(rightPos.style.left, 10) + stepSize) + 'px';
             world.person[y][x + 1] = rightPos;
@@ -224,7 +230,7 @@
           var bottomPos = world.person[y][x];
           newPos = parseInt(manager.el.style.top, 10) + stepSize + 'px';
           if ((y - 1) < (mapHeight - 2) && bottomPos && world.map[y + 1][x] && !world.person[y + 1][x]) {
-            param = {id: bottomPos, prevPos: [y, x], curPos: [y + 1, x]};
+            param = { id: bottomPos, prevPos: [y, x], curPos: [y + 1, x] };
             prevStatus(param);
             bottomPos.style.top = (parseInt(bottomPos.style.top, 10) + stepSize) + 'px';
             world.person[y + 1][x] = bottomPos;
@@ -249,10 +255,15 @@
   (function init() {
     // Строим игровое поле.
     var fragment = document.createDocumentFragment(),
-      i = 256;
+      i = 256,
+      angelBlock = document.createElement('div');
+
+    angelBlock.className = 'angel';
+    fragment.appendChild(angelBlock);
+
     while (i--) {
       var block = document.createElement('div');
-      block.className = "map-item";
+      block.className = 'map-item';
       fragment.appendChild(block);
     }
     document.querySelector('.map').appendChild(fragment);
