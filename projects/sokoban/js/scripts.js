@@ -89,7 +89,7 @@
     return manager;
   }
 
-  function gameStatus() {
+  function checkGameStatus() {
     // После каждого хода проверяем на "выигрыш".
     // Если хоть в одной выигрышной позиции нет персонажа,
     // прерываем проверку. Иначе - уровень пройден.
@@ -135,6 +135,103 @@
     }
   }
 
+  function finalizeStep(y, x) {
+    world.person[y][x] = 0;
+    checkGameStatus();
+  }
+
+  function stepLeft() {
+    var newPos,
+      y = manager.pos[0],
+      x = manager.pos[1] - 1;
+
+    if (world.map[y][x]) {
+      var leftPos = world.person[y][x];
+      newPos = parseInt(manager.el.style.left, 10) - stepSize + 'px';
+      if (leftPos && world.map[y][x - 1] && !world.person[y][x - 1]) {
+        prevStatus({ id: leftPos, prevPos: [y, x], curPos: [y, x - 1] });
+        leftPos.style.left = (parseInt(leftPos.style.left, 10) - stepSize) + 'px';
+        world.person[y][x - 1] = leftPos;
+        manager.pos[1] = x;
+        manager.el.style.left = newPos;
+        finalizeStep(y, x);
+      } else if (!leftPos) {
+        prevStatus(null);
+        manager.pos[1] = x;
+        manager.el.style.left = newPos;
+      }
+    }
+  }
+
+  function stepUp() {
+    var newPos,
+      y = manager.pos[0] - 1,
+      x = manager.pos[1];
+
+    if (manager.pos[0] > 0 && world.map[y][x]) {
+      var topPos = world.person[y][x];
+      newPos = parseInt(manager.el.style.top, 10) - stepSize + 'px';
+      if ((y + 1) > 1 && topPos && world.map[y - 1][x] && !world.person[y - 1][x]) {
+        prevStatus({ id: topPos, prevPos: [y, x], curPos: [y - 1, x] });
+        topPos.style.top = (parseInt(topPos.style.top, 10) - stepSize) + 'px';
+        world.person[y - 1][x] = topPos;
+        manager.pos[0] = y;
+        manager.el.style.top = newPos;
+        finalizeStep(y, x);
+      } else if (!topPos) {
+        prevStatus(null);
+        manager.pos[0] = y;
+        manager.el.style.top = newPos;
+      }
+    }
+  }
+
+  function stepRight() {
+    var newPos,
+    y = manager.pos[0],
+    x = manager.pos[1] + 1;
+
+    if (world.map[y][x]) {
+      var rightPos = world.person[y][x];
+      newPos = parseInt(manager.el.style.left, 10) + stepSize + 'px';
+      if (rightPos && world.map[y][x + 1] && !world.person[y][x + 1]) {
+        prevStatus({ id: rightPos, prevPos: [y, x], curPos: [y, x + 1] });
+        rightPos.style.left = (parseInt(rightPos.style.left, 10) + stepSize) + 'px';
+        world.person[y][x + 1] = rightPos;
+        manager.pos[1] = x;
+        manager.el.style.left = newPos;
+        finalizeStep(y, x);
+      } else if (!rightPos) {
+        prevStatus(null);
+        manager.el.style.left = newPos;
+        manager.pos[1] = x;
+      }
+    }
+  }
+
+  function stepDown() {
+    var newPos,
+      y = manager.pos[0] + 1,
+      x = manager.pos[1];
+
+    if ((y - 1) < (mapHeight - 1) && world.map[y][x]) {
+      var bottomPos = world.person[y][x];
+      newPos = parseInt(manager.el.style.top, 10) + stepSize + 'px';
+      if ((y - 1) < (mapHeight - 2) && bottomPos && world.map[y + 1][x] && !world.person[y + 1][x]) {
+        prevStatus({ id: bottomPos, prevPos: [y, x], curPos: [y + 1, x] });
+        bottomPos.style.top = (parseInt(bottomPos.style.top, 10) + stepSize) + 'px';
+        world.person[y + 1][x] = bottomPos;
+        manager.pos[0] = y;
+        manager.el.style.top = newPos;
+        finalizeStep(y, x);
+      } else if (!bottomPos) {
+        prevStatus(null);
+        manager.pos[0] = y;
+        manager.el.style.top = newPos;
+      }
+    }
+  }
+
   function undo() {
     manager.pos = tmpStatus.lastManager.pos.slice(); // Возвращаем "начальника" на предыдущее место
     manager.el.style.left = tmpStatus.lastManager.left;
@@ -153,100 +250,29 @@
     var code = e.which,
       newPos,
       x, y,
-      auxiliaryFunc = function () {
-        world.person[y][x] = 0;
-        gameStatus();
-      },
       param = {};// параметры для отмены хода
 
     switch (code) {
       case 37: //left
-        y = manager.pos[0];
-        x = manager.pos[1] - 1;
-        if (world.map[y][x]) {
-          var leftPos = world.person[y][x];
-          newPos = parseInt(manager.el.style.left, 10) - stepSize + 'px';
-          if (leftPos && world.map[y][x - 1] && !world.person[y][x - 1]) {
-            param = { id: leftPos, prevPos: [y, x], curPos: [y, x - 1] };
-            prevStatus(param);
-            leftPos.style.left = (parseInt(leftPos.style.left, 10) - stepSize) + 'px';
-            world.person[y][x - 1] = leftPos;
-            manager.pos[1] = x;
-            manager.el.style.left = newPos;
-            auxiliaryFunc();
-          } else if (!leftPos) {
-            prevStatus(null);
-            manager.pos[1] = x;
-            manager.el.style.left = newPos;
-          }
-        }
+        stepLeft();
         break;
+
       case 38: //top
-        y = manager.pos[0] - 1;
-        x = manager.pos[1];
-        if (manager.pos[0] > 0 && world.map[y][x]) {
-          var topPos = world.person[y][x];
-          newPos = parseInt(manager.el.style.top, 10) - stepSize + 'px';
-          if ((y + 1) > 1 && topPos && world.map[y - 1][x] && !world.person[y - 1][x]) {
-            param = { id: topPos, prevPos: [y, x], curPos: [y - 1, x] };
-            prevStatus(param);
-            topPos.style.top = (parseInt(topPos.style.top, 10) - stepSize) + 'px';
-            world.person[y - 1][x] = topPos;
-            manager.pos[0] = y;
-            manager.el.style.top = newPos;
-            auxiliaryFunc();
-          } else if (!topPos) {
-            prevStatus(null);
-            manager.pos[0] = y;
-            manager.el.style.top = newPos;
-          }
-        }
+        stepUp();
         break;
+
       case 39: //right
-        y = manager.pos[0];
-        x = manager.pos[1] + 1;
-        if (world.map[y][x]) {
-          var rightPos = world.person[y][x];
-          newPos = parseInt(manager.el.style.left, 10) + stepSize + 'px';
-          if (rightPos && world.map[y][x + 1] && !world.person[y][x + 1]) {
-            param = { id: rightPos, prevPos: [y, x], curPos: [y, x + 1] };
-            prevStatus(param);
-            rightPos.style.left = (parseInt(rightPos.style.left, 10) + stepSize) + 'px';
-            world.person[y][x + 1] = rightPos;
-            manager.pos[1] = x;
-            manager.el.style.left = newPos;
-            auxiliaryFunc();
-          } else if (!rightPos) {
-            prevStatus(null);
-            manager.el.style.left = newPos;
-            manager.pos[1] = x;
-          }
-        }
+        stepRight();
         break;
+
       case 40: // down
-        y = manager.pos[0] + 1;
-        x = manager.pos[1];
-        if ((y - 1) < (mapHeight - 1) && world.map[y][x]) {
-          var bottomPos = world.person[y][x];
-          newPos = parseInt(manager.el.style.top, 10) + stepSize + 'px';
-          if ((y - 1) < (mapHeight - 2) && bottomPos && world.map[y + 1][x] && !world.person[y + 1][x]) {
-            param = { id: bottomPos, prevPos: [y, x], curPos: [y + 1, x] };
-            prevStatus(param);
-            bottomPos.style.top = (parseInt(bottomPos.style.top, 10) + stepSize) + 'px';
-            world.person[y + 1][x] = bottomPos;
-            manager.pos[0] = y;
-            manager.el.style.top = newPos;
-            auxiliaryFunc();
-          } else if (!bottomPos) {
-            prevStatus(null);
-            manager.pos[0] = y;
-            manager.el.style.top = newPos;
-          }
-        }
+        stepDown();
         break;
+
       case 32: // undo клавиша "space"
         undo();
         break;
+
       default:
         return false;
     }
@@ -273,6 +299,10 @@
 
     createMap();
     document.addEventListener('keyup', moveManager, false);
+    document.addEventListener('swipeLeft', stepLeft, false);
+    document.addEventListener('swipeUp', stepUp, false);
+    document.addEventListener('swipeRight', stepRight, false);
+    document.addEventListener('swipeDown', stepDown, false);
   })();
 
 })();
