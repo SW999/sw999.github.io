@@ -33,11 +33,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
               yr = Math.abs(y);
 
             if (xr > yr) {
-              if (Math.max(xr) > 70) {
+              if (Math.max(xr) > 50) {
                 customEvent(e, (x < 0 ? 'swipeLeft' : 'swipeRight'));
               }
             } else {
-              if (Math.max(yr) > 70) {
+              if (Math.max(yr) > 50) {
                 customEvent(e, (y < 0 ? 'swipeUp' : 'swipeDown'));
               }
             }
@@ -65,11 +65,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
               yr = Math.abs(y);
 
             if (xr > yr) {
-              if (Math.max(xr) > 70) {
+              if (Math.max(xr) > 50) {
                 customEvent(e, (x < 0 ? 'swipeLeft' : 'swipeRight'));
               }
             } else {
-              if (Math.max(yr) > 70) {
+              if (Math.max(yr) > 50) {
                 customEvent(e, (y < 0 ? 'swipeUp' : 'swipeDown'));
               }
             }

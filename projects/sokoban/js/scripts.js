@@ -140,7 +140,9 @@
     checkGameStatus();
   }
 
-  function stepLeft() {
+  function stepLeft(e) {
+    e.stopPropagation();
+
     var newPos,
       y = manager.pos[0],
       x = manager.pos[1] - 1;
@@ -163,7 +165,9 @@
     }
   }
 
-  function stepUp() {
+  function stepUp(e) {
+    e.stopPropagation();
+
     var newPos,
       y = manager.pos[0] - 1,
       x = manager.pos[1];
@@ -186,7 +190,9 @@
     }
   }
 
-  function stepRight() {
+  function stepRight(e) {
+    e.stopPropagation();
+
     var newPos,
     y = manager.pos[0],
     x = manager.pos[1] + 1;
@@ -209,7 +215,9 @@
     }
   }
 
-  function stepDown() {
+  function stepDown(e) {
+    e.stopPropagation();
+
     var newPos,
       y = manager.pos[0] + 1,
       x = manager.pos[1];
@@ -254,19 +262,19 @@
 
     switch (code) {
       case 37: //left
-        stepLeft();
+        stepLeft(e);
         break;
 
       case 38: //top
-        stepUp();
+        stepUp(e);
         break;
 
       case 39: //right
-        stepRight();
+        stepRight(e);
         break;
 
       case 40: // down
-        stepDown();
+        stepDown(e);
         break;
 
       case 32: // undo клавиша "space"
@@ -282,7 +290,8 @@
     // Строим игровое поле.
     var fragment = document.createDocumentFragment(),
       i = 256,
-      angelBlock = document.createElement('div');
+      angelBlock = document.createElement('div'),
+      $map = document.querySelector('.map');
 
     angelBlock.className = 'angel';
     fragment.appendChild(angelBlock);
@@ -292,17 +301,17 @@
       block.className = 'map-item';
       fragment.appendChild(block);
     }
-    document.querySelector('.map').appendChild(fragment);
+    $map.appendChild(fragment);
 
     mapBlocks = document.querySelectorAll('.map-item');
     stepSize = document.querySelector('.map-item').clientWidth + 3;
 
     createMap();
     document.addEventListener('keyup', moveManager, false);
-    document.addEventListener('swipeLeft', stepLeft, false);
-    document.addEventListener('swipeUp', stepUp, false);
-    document.addEventListener('swipeRight', stepRight, false);
-    document.addEventListener('swipeDown', stepDown, false);
+    $map.addEventListener('swipeLeft', stepLeft, false);
+    $map.addEventListener('swipeUp', stepUp, false);
+    $map.addEventListener('swipeRight', stepRight, false);
+    $map.addEventListener('swipeDown', stepDown, false);
   })();
 
 })();
