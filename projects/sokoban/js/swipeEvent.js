@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
       }
     } else {
-      document.querySelector('html').classList.add('touch');
+      document.documentElement.classList.add('touch');
       touch = {
         touchstart: function (e) {
           sp = {x: e.touches[0].pageX, y: e.touches[0].pageY}
