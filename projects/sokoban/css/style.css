@@ -12,6 +12,14 @@ html {
   font-size: 10px;
   -webkit-text-size-adjust: 100%;
 }
+@media (max-width: 1023px) {
+  @supports (-webkit-appearance: none) {
+    html.touch {
+      max-height: calc(100vh - 56px);
+      overflow: hidden;
+    }
+  }
+}
 
 body {
   height: 100%;
@@ -23,8 +31,11 @@ body {
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    /* Fallback for browsers that do not support Custom Properties */
-    height: calc(var(--vh, 1vh) * 100);
+  }
+  @supports (-webkit-appearance: none) {
+    .touch body {
+      max-height: calc(100vh - 56px);
+    }
   }
 }
 @media (min-width: 1024px) {

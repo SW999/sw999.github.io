@@ -287,15 +287,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
   }
 
   (function init() {
-    if (document.documentElement.classList.contains('touch')) {
-      function setDocumentHeight () {
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-      }
-      window.addEventListener('resize', setDocumentHeight);
-      setDocumentHeight();
-    }
-
     // Строим игровое поле.
     var fragment = document.createDocumentFragment(),
       i = 256,
