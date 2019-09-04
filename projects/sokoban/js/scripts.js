@@ -291,7 +291,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
     var fragment = document.createDocumentFragment(),
       i = 256,
       angelBlock = document.createElement('div'),
-      $map = document.querySelector('.map');
+      $map = document.querySelector('.map'),
+      $start = document.getElementById('start-game');
 
     angelBlock.className = 'angel';
     fragment.appendChild(angelBlock);
@@ -312,6 +313,10 @@ document.addEventListener('DOMContentLoaded', function (e) {
     $map.addEventListener('swipeUp', stepUp, false);
     $map.addEventListener('swipeRight', stepRight, false);
     $map.addEventListener('swipeDown', stepDown, false);
+    $start.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.getElementById('dashboard').classList.add('hidden');
+    }, false);
   })();
 
 });
