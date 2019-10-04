@@ -189,7 +189,7 @@ pre {
 }
 	
 	div.readableBigImage { margin-top: 0.5em; margin-bottom: 0.5em; }
-	div.readableBigImage img { display: block; border: 1px solid; float: none; }
+	div.readableBigImage img { display: block; border: 1px solid; float: none; max-width: 100%; }
 	
 	.clear { clear: both; margin: 0; } /* clear */
 	
