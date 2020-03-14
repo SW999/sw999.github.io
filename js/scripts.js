@@ -3,10 +3,10 @@ const $toggleMenu = d.querySelector('.menu-toggle');
 const $title = d.querySelector('.title-section');
 
 if ('ontouchstart' in window) {
-  window.addEventListener('resize', () => {
-    document.body.height = window.innerHeight;
-  });
-  window.onresize();
+  const onResize = () => document.body.height = window.innerHeight;
+
+  window.addEventListener('resize', onResize);
+  onResize();
 }
 
 $toggleMenu.addEventListener('click', () => {
