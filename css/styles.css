@@ -1,7 +1,7 @@
 *, *::after, *::before {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -21,13 +21,6 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: lightgreen;
-}
-
-/* bullshit for mobile Google Chrome */
-@supports (-webkit-appearance:none) {
-  .os-android {
-    min-height: calc(100vh - 56px);
-  }
 }
 
 img {
@@ -76,8 +69,10 @@ nav .tags {
   font-size: 70%;
 }
 
-nav ul a:hover {
-  background-color: rgba(0, 0, 0, 0.5);
+@media(hover: hover) and (pointer: fine) {
+  nav ul a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 }
 
 .menu-section.on {

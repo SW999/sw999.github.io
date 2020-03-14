@@ -1,10 +1,12 @@
 const d = document;
 const $toggleMenu = d.querySelector('.menu-toggle');
 const $title = d.querySelector('.title-section');
-const isAndroid = /(android)/gi.test(navigator.userAgent);
 
-if (isAndroid) {
-  d.body.classList.add('os-android');
+if ('ontouchstart' in window) {
+  window.addEventListener('resize', () => {
+    document.body.height = window.innerHeight;
+  });
+  window.onresize();
 }
 
 $toggleMenu.addEventListener('click', () => {
