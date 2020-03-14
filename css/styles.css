@@ -69,6 +69,13 @@ nav .tags {
   font-size: 70%;
 }
 
+/* bullshit for mobile Google Chrome */
+@supports (-webkit-appearance:none) {
+  .os-android {
+    min-height: calc(100vh - 56px);
+  }
+}
+
 @media(hover: hover) and (pointer: fine) {
   nav ul a:hover {
     background-color: rgba(0, 0, 0, 0.5);
