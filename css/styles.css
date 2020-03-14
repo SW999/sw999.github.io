@@ -69,13 +69,9 @@ nav .tags {
   font-size: 70%;
 }
 
-/* bullshit for mobile Google Chrome and Safari */
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  .os-android {
-    min-height: calc(100vh - 56px);
-  }
+.mobile-slug {
+  min-height: calc(100vh - 56px);
 }
-
 
 @media(hover: hover) and (pointer: fine) {
   nav ul a:hover {
