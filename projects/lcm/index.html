@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+  <title>НОК / НОД</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, height=device-height,user-scalable=no, initial-scale=1.0" />
+  <meta name="description" content="Вычисление НОК / НОД двух чисел.">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1998d3">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+</head>
+<body>
+<h2>НОК / НОД двух чисел</h2> 
+<div class="container">
+  <form id="form">
+    <label>
+     <input type="number" name="num1"  id="num1" placeholder="Число 1">
+    </label>
+    <label>
+      <input type="number" name="num2" id="num2" placeholder="Число 2">
+    </label>
+  <button type="submit" id="calc">Тыц!</button>
+  </form>
+  <br>
+  <br>
+  <div id="result" class="result"></div>
+</div>
+  <script src="js/main.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+   navigator.serviceWorker.register('./sw.js').then( () => {
+    console.log('Service Worker Registered')
+   })
+ })
+}
+</script>
+</body>
+</html>
