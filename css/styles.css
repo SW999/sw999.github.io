@@ -5,7 +5,7 @@
 }
 
 html {
-  height: 100%;
+  min-height: 100%;
   font-size: 10px;
 }
 
@@ -26,22 +26,29 @@ body {
 img {
   max-width: 100%;
   height: auto;
-  vertical-align: bottom;
 }
 
-.page-content {
-  flex: 1 0 auto;
-}
-
-.page-footer {
-  flex-shrink: 0;
+footer {
+  display: flex;
+  align-content: center;
+  gap: 1rem;
+  margin-top: auto;
   padding: 2rem;
-  color: #fff;
+  color: white;
   font-family: 'freight-text-pro', Georgia, Cambria, 'Times New Roman', Times, serif;
   background-color: rgba(51, 51, 51, .7);
 }
 
+footer a {
+  color: #02ebff;
+}
+
+footer a:first-child {
+  line-height: 1;
+}
+
 nav ul {
+  display: none;
   margin: 6.4rem auto;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
@@ -49,8 +56,8 @@ nav ul {
   text-align: left;
 }
 
-nav ul.hidden {
-  display: none;
+.on ul {
+  display: block;
 }
 
 nav a {
@@ -69,19 +76,14 @@ nav .tags {
   font-size: 70%;
 }
 
-.mobile-slug {
-  min-height: calc(100vh - 56px);
-}
-
 @media(hover: hover) and (pointer: fine) {
   nav ul a:hover {
     background-color: rgba(0, 0, 0, 0.5);
   }
 }
 
-.menu-section.on {
+.menu.on {
   position: absolute;
-  display: block;
   width: 100%;
   height: 100%;
   z-index: 10;
@@ -105,7 +107,7 @@ nav .tags {
   display: block;
   width: 100%;
   background-color: white;
-  transition: transform .3s ease;
+  transition: transform .35s ease;
 }
 
 .menu-toggle > span {
@@ -115,7 +117,7 @@ nav .tags {
 
 .menu-toggle > span:before,
 .menu-toggle > span:after {
-  content: "";
+  content: '';
   height: 100%;
 }
 
@@ -127,47 +129,48 @@ nav .tags {
   transform: translateY(1.1rem);
 }
 
-.menu-toggle.on {
+.on .menu-toggle {
   transform: rotate(45deg);
 }
 
-.menu-toggle.on > span:before,
-.menu-toggle.on > span:after {
+.on .menu-toggle > span:before,
+.on .menu-toggle > span:after {
   transform: rotate(90deg);
 }
 
-.title-section {
+.content {
   max-height: 1000px;
   text-align: center;
   transition: all .2s ease;
 }
 
-.title-section h1 {
+.content h1 {
   margin: 2rem 0 1rem 0;
-  color: #fff;
+  color: white;
   font-family: "Segoe UI", sans-serif;
   font-size: 2rem;
-  text-shadow: 1px 1px 1px #000;
+  text-shadow: 1px 1px 1px black;
 }
 
-.title-section img {
-  max-height: 70vh;
+.content img {
   width: auto;
   max-width: 30rem;
+  max-height: 70vh;
 }
 
-.hide {
+.on + .content {
   max-height: 0;
   overflow: hidden;
+  opacity: 0.3;
 }
 
 @media (min-width: 765px) {
-  .title-section h1 {
+  .content h1 {
     margin: 6rem 0 3rem 0;
     font-size: 5rem;
   }
 
-  .title-section img {
+  .content img {
     max-width: none;
   }
 
