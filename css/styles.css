@@ -5,14 +5,18 @@
 }
 
 html {
-  min-height: 100%;
   font-size: 10px;
+}
+
+html,
+body,
+.content {
+  min-height: 100%;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   font-size: 1.6rem;
   line-height: 1.6;
   background-image: url(../img/trianglify.svg);
@@ -29,11 +33,15 @@ img {
 }
 
 footer {
+  position: fixed;
+  bottom: 0;
   display: flex;
   align-content: center;
   gap: 1rem;
+  width: 100%;
   margin-top: auto;
   padding: 2rem;
+  z-index: 1;
   color: white;
   font-family: 'freight-text-pro', Georgia, Cambria, 'Times New Roman', Times, serif;
   background-color: rgba(51, 51, 51, .7);
