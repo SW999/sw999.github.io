@@ -8,8 +8,10 @@ html {
   font-size: 10px;
 }
 
-html,
-body,
+body {
+  min-height: 100dvh;
+}
+
 .content {
   min-height: 100%;
 }

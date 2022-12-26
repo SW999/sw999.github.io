@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>sw999.github.io - Sandbox projects</title>
-    <meta name='viewport' content='maximum-scale=1, minimum-scale=1, initial-scale=1, width=device-width, height=device-height, shrink-to-fit=no, viewport-fit=cover' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta name="description" content="Sandbox projects">
     <meta name="author" content="sw999">
     <link rel="stylesheet" href="css/styles.css">
@@ -13,7 +13,6 @@
     <nav role="navigation" aria-label="Main navigation" class="menu">
       <div class="menu-toggle"><span></span></div>
       <ul class="hidden">
-        <li><a href="https://github.com/SW999/brainless-frontend" target="_blank" rel="noopener noreferrer">Brainless frontend :: <span class="tags">React, CSS, Express</span></a></li>
         <li><a href="./wordle-helper" target="_blank" rel="noopener noreferrer">Wordle helper :: <span class="tags">JS, SASS, PWA</span></a></li>
         <li><a href="./speech-cards" target="_blank" rel="noopener noreferrer">Speech cards :: <span class="tags">TS, React with Hooks, SASS, Parcel</span></a></li>
         <li><a href="./random-number" target="_blank" rel="noopener noreferrer">Get random number :: <span class="tags">TS, React with Hooks, SASS, Web Crypto API, Parcel</span></a></li>
@@ -32,6 +31,8 @@
     </section>
   </main>
   <footer><a href="https://github.com/SW999/sw999.github.io" title="Github"><img src="img/github.svg" alt="github" width="24" height="24"></a> © SW999 2022. All code <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT license</a></footer>
-  <script src="js/scripts.js"></script>
+  <script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => document.querySelector('.menu')?.classList.toggle('on'));
+  </script>
   </body>
 </html>
