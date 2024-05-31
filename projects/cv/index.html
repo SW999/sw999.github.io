@@ -8,31 +8,32 @@
      <style>
         * { margin: 0; padding: 0; }
         body { padding:0 20px;font: 16px Helvetica, Sans-Serif; line-height: 24px; background: url(./noise.jpg); }
-        .clear { clear: both; }
-        #page-wrap { width: 800px; margin: 40px auto 60px; }
+        .page-wrap { width: 800px; margin: 40px auto 60px; }
         .pic { float: right; }
+        .vcard {margin-bottom: 45px;}
         h1 {width: calc(100% - 200px);color:#016b5d;margin: 0 0 20px 0; font-size: 42px; font-weight: bold; letter-spacing: -2px; border-bottom: 1px solid #999; }
         h1 span { font-size: 20px; color: #343434; font-weight: normal; letter-spacing: 1px; line-height: 3; }
         h2 { font-size: 20px; margin: 0 0 15px 0;color:#016b5d; }
-        h2 span { display: block;font-style: italic; font-family: Georgia, Serif; font-size: 16px; color: #999; font-weight: normal; }
+        h2 span, .objective p, .project-title span, h3 span {font-family: Georgia, Serif;}
+        h2 span { display: block;font-style: italic;font-size: 16px; color: #999; font-weight: normal; }
         h3 { font-size: 16px; margin: 0 0 10px 0;color:#343434; }
-
-        h4 { font-size: 15px; margin: 0 0 7px 0;color:#016b5d;; }
-        h4 span { font-style: italic; margin-left: 10px;font-family: Georgia, Serif; font-size: 14px; color: #999; font-weight: normal; }
+        .project-title { font-size: 15px; margin: 0 0 7px 0;color:#016b5d; }
+        .project-title span, h3 span { font-style: italic; margin-left: 10px;font-size: 14px; color: #999; font-weight: normal; }
         p { margin: 0 0 16px 0; }
+        summary {cursor: pointer;}
         a { color: #999; text-decoration: none; border-bottom: 1px dotted #999; }
         a:hover { border-bottom-style: solid; color: black; }
         ul { margin: 0 0 32px 17px; }
-        #objective { width: 700px; float: left; }
-        #objective p { font-family: Georgia, Serif; font-style: italic; color: #343434; }
-        dt { font-style: italic; font-weight: bold; font-size: 18px; text-align: right; padding: 0 26px 0 0; width: 150px; float: left; height: 140px; border-right: 1px solid #999;color: #343434;  }
-        dd { width: 600px; float: right; }
-        dd.clear { float: none; margin: 0; height: 30px; }
+        .objective { width: 700px;margin-bottom: 40px;}
+        .objective p {font-style: italic; color: #343434; }
+        dl {display:flex;flex-wrap:wrap;}
+        dt { font-style: italic; font-weight: bold; font-size: 18px; text-align: right; padding: 0 25px 0 0; width: 120px; height: 140px; border-right: 1px solid #999;color: #343434;  }
+        dd { width: 605px;margin-bottom: 30px;padding-left: 25px;}
         hr {border: 0;height: 1px;margin: 40px 0;background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));}
      </style>
 </head>
 <body>
-    <div id="page-wrap">
+    <div class="page-wrap">
         <img src="./pic.jpg" alt="My Photo" class="pic" />
     
         <div id="contact-info" class="vcard">
@@ -46,17 +47,13 @@
                 <strong>Linkedin:</strong> <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/sergey-vaitehovich/">www.linkedin.com/in/sergey-vaitehovich/</a><br />
                 <strong>Telegram:</strong> <a target="_blank" rel="noreferrer" href="https://t.me/w_sergey">t.me/w_sergey</a>
             </p>
-        </div><br /><br />
+        </div>
                 
-        <div id="objective">
+        <div class="objective">
             <p>Resourceful professional with successful track record in developing innovative web designs and features. Possesses solid knowledge of HTML, CSS, JavaScript and ReactJS with ability to quickly learn new technologies. Demonstrated success in identifying and resolving complex code issues. Achieves compatibility targets while meeting and exceeding customer demands.</p>
         </div>
         
-        <div class="clear"></div><br /><br />
-        
         <dl>
-            <dd class="clear"></dd>
-
             <dt>Overview</dt>
             <dd>
                 <ul>
@@ -71,8 +68,6 @@
                 </ul>
             </dd>
 
-            <dd class="clear"></dd>
-
             <dt>Skills</dt>
             <dd>
                 <h2>Programing Languages</h2>
@@ -85,8 +80,6 @@
                 <h2>Testing Tools</h2>
                 <p>Jest, React testing library, Cypress</p>
             </dd>
-
-            <dd class="clear"></dd>
 
             <dt>Experience</dt>
             <dd>
@@ -117,104 +110,150 @@
 
                 <h2>EPAM Systems, Senior Frontend Developer<span>Minsk, Belarus / Vilnius, Lithuania (February 2012 - October 2022)</span></h2>
                 <p>As a key front-end developer in various teams, I contributed to developing approximately 20 enterprise software products for clients including The New York Stock Exchange, Johnson & Johnson, Berliner Zeitung, FleetGuard Enterprise, Everything Everywhere (British national mobile network), and more.</p>
+                <br>
+                <h3>Projects at EPAM: <span>click to a title to see details</span></h3>
 
-                <h3>Projects at EPAM:</h3>
+                <details>
+                    <summary title="Click to see details"><strong class="project-title">Berliner Zeitung<span>Aug 2021 - Oct 2022</span></strong>
+                    </summary>
+                    <h3>Project Overview:</h3>
+                    <p>Global website update and redesign for the daily newspaper based in Germany.</p>
 
-                <h4>Berliner Zeitung<span>Aug 2021 - Oct 2022</span></h4>
-                <h3>Project Overview:</h3>
-                <p>Global website update and redesign for the daily newspaper based in Germany.</p>
+                    <h3>Responsibilities:</h3>
+                    <ul>
+                        <li>Develop complex React components (galleries, complex layouts, forms) for mobile, tablet
+                            and desktop view; resolve bug-issues
+                        </li>
+                        <li>Perform code reviews</li>
+                        <li>Participate in clarifying the requirements of complex tasks</li>
+                        <li>Participate in the decision-making on the choice of technology for the site and made a
+                            prototype for demonstration to the customer.
+                        </li>
+                        <li>Improve performance</li>
+                    </ul>
+                    <h3>Achievements:</h3>
+                    <p>During the investigation phase, several teams proposed using different technologies. Our team
+                        suggested using the capabilities of NextJS as the main engine. As a front-end developer, I
+                        participated in the development of the concept together with the architect. As a result, we
+                        have done a working prototype with a backend running in the cloud and a frontend that
+                        matched the designs. We successfully did a demo to the customer. As a result, our solution
+                        was chosen for further implementation.</p>
+                    <p>I managed to implement a complex animated carousel of images for mobile devices without using
+                        JavaScript.</p>
+                    <p>In addition, I was involved in researching and fixing complex bugs that significantly
+                        affected performance.</p>
 
-                <h3>Responsibilities:</h3>
-                <ul>
-                    <li>Develop complex React components (galleries, complex layouts, forms) for mobile, tablet and desktop view; resolve bug-issues</li>
-                    <li>Perform code reviews</li>
-                    <li>Participate in clarifying the requirements of complex tasks</li>
-                    <li>Participate in the decision-making on the choice of technology for the site and made a prototype for demonstration to the customer.></li>
-                    <li>Improve performance</li>
-                </ul>
-                <h3>Achievements:</h3>
-                <p>During the investigation phase, several teams proposed using different technologies. Our team suggested using the capabilities of NextJS as the main engine. As a front-end developer, I participated in the development of the concept together with the architect. As a result, we have done a working prototype with a backend running in the cloud and a frontend that matched the designs. We successfully did a demo to the customer. As a result, our solution was chosen for further implementation.</p>
-                <p>I managed to implement a complex animated carousel of images for mobile devices without using JavaScript.</p>
-                <p>In addition, I was involved in researching and fixing complex bugs that significantly affected performance.</p>
+                    <h3>Key Technologies:</h3>
+                    <p>JavaScript, CSS / SASS, React, NextJS, Jest, React testing library, React Query, React
+                        Virtuoso</p>
+                    <hr>
+                </details>
 
-                <h3>Key Technologies:</h3>
-                <p>JavaScript, CSS / SASS, React, NextJS, Jest, React testing library, React Query, React Virtuoso</p>
-                <hr>
-                <h4>A.S.Adventure<span>Jul 2019 - Mar 2020</span></h4>
-                <h3>Project Overview:</h3>
-                <p>The platform involved the development of a customizable template for online stores with a tourism focus. The platform provides a single set of functions for selecting and purchasing products and simple implementation of brand styles.</p>
+                <details>
+                    <summary title="Click to see details"><strong class="project-title">A.S.Adventure<span>Jul 2019 - Mar 2020</span></strong>
+                    </summary>
+                    <h3>Project Overview:</h3>
+                    <p>The platform involved the development of a customizable template for online stores with a tourism
+                        focus. The platform provides a single set of functions for selecting and purchasing products and
+                        simple implementation of brand styles.</p>
 
-                <h3>Responsibilities:</h3>
-                <ul>
-                    <li>Participate in development of a components design system based on the Atomic design concept</li>
-                    <li>Perform code reviews</li>
-                    <li>Improve performance</li>
-                </ul>
-                <h3>Achievements:</h3>
-                <p>A versatile system of front-end components with good test coverage has been developed. It allows the quick creation of complex components similar to Lego bricks. In addition, it allows for fast and easy changes in the appearance of components to match brand designs.</p>
+                    <h3>Responsibilities:</h3>
+                    <ul>
+                        <li>Participate in development of a components design system based on the Atomic design
+                            concept
+                        </li>
+                        <li>Perform code reviews</li>
+                        <li>Improve performance</li>
+                    </ul>
+                    <h3>Achievements:</h3>
+                    <p>A versatile system of front-end components with good test coverage has been developed. It allows
+                        the quick creation of complex components similar to Lego bricks. In addition, it allows for fast
+                        and easy changes in the appearance of components to match brand designs.</p>
 
-                <h3>Key Technologies:</h3>
-                <p>JavaScript, CSS / SASS, React, Jest, React testing library, Storybook, Atomic design</p>
-                <hr>
-                <h4>ConstructConnect<span>Dec 2018 - Jul 2019</span></h4>
-                <h3>Project Overview:</h3>
-                <p>Redesign of the platform, which helps construction firms increase their chances of finding quality projects, managing winning bids, and using insights to drive growth.</p>
+                    <h3>Key Technologies:</h3>
+                    <p>JavaScript, CSS / SASS, React, Jest, React testing library, Storybook, Atomic design</p>
+                    <hr>
+                </details>
 
-                <h3>Responsibilities:</h3>
-                <ul>
-                    <li>Develop front-end components, resolve bug-issues</li>
-                    <li>Perform code reviews</li>
-                    <li>Implement proof of concepts</li>
-                    <li>Recommend improvements to existing software</li>
-                    <li>Improve performance</li>
-                </ul>
-                <h3>Achievements:</h3>
-                <p>The main focus of the project was on developing new components using new technologies, maintaining and updating components written previously. I was involved in a global upgrade of React to a new version using React hooks. In addition, I developed a complex table component that allows to filter and sort data.</p>
+                <details>
+                    <summary title="Click to see details"><strong class="project-title">ConstructConnect<span>Dec 2018 - Jul 2019</span></strong>
+                    </summary>
+                    <h3>Project Overview:</h3>
+                    <p>Redesign of the platform, which helps construction firms increase their chances of finding
+                        quality projects, managing winning bids, and using insights to drive growth.</p>
 
-                <h3>Key Technologies:</h3>
-                <p>JavaScript, CSS / SASS, React, Jest</p>
-                <hr>
-                <h4>FleetGuard Enterprise Portal<span>Dec 2015 - Dec 2017</span></h4>
-                <h3>Project Overview:</h3>
-                <p>A modular monitoring tool, which provides critical insights from a global fleet view down to single-vessel details to help boost performance in various conditions.</p>
+                    <h3>Responsibilities:</h3>
+                    <ul>
+                        <li>Develop front-end components, resolve bug-issues</li>
+                        <li>Perform code reviews</li>
+                        <li>Implement proof of concepts</li>
+                        <li>Recommend improvements to existing software</li>
+                        <li>Improve performance</li>
+                    </ul>
+                    <h3>Achievements:</h3>
+                    <p>The main focus of the project was on developing new components using new technologies,
+                        maintaining and updating components written previously. I was involved in a global upgrade of
+                        React to a new version using React hooks. In addition, I developed a complex table component
+                        that allows to filter and sort data.</p>
 
-                <h3>Responsibilities:</h3>
-                <ul>
-                    <li>Develop front-end components, resolve bug-issues</li>
-                    <li>Perform code reviews</li>
-                    <li>Execute essential technical web-site support</li>
-                    <li>Recommend improvements to existing software</li>
-                    <li>Improve performance</li>
-                    <li>Participate in clarifying the requirements of complex tasks</li>
-                </ul>
-                <h3>Achievements:</h3>
-                <p>Participated in the development of the following features: operator dashboard, vessel (group) view, voyage calculations/optimization, performance monitoring and reporting, vessel trend and benchmark analysis.</p>
-                <p>In addition, I visualized the routes of vessels and tropical cyclones on the map with the ability to obtain detailed information at each point along the route.</p>
+                    <h3>Key Technologies:</h3>
+                    <p>JavaScript, CSS / SASS, React, Jest</p>
+                    <hr>
+                </details>
 
-                <h3>Key Technologies:</h3>
-                <p>React, CSS / SASS, OpenLayers, DevExpress</p>
-                <hr>
-                <h4>Media Village<span>Mar 2014 - Dec 2014</span></h4>
-                <h3>Project Overview:</h3>
-                <p>Project involving a global website redesign for a full-service creative print and design agency.</p>
+                <details>
+                    <summary title="Click to see details"><strong class="project-title">FleetGuard Enterprise
+                        Portal<span>Dec 2015 - Dec 2017</span></strong></summary>
+                    <h3>Project Overview:</h3>
+                    <p>A modular monitoring tool, which provides critical insights from a global fleet view down to
+                        single-vessel details to help boost performance in various conditions.</p>
 
-                <h3>Responsibilities:</h3>
-                <ul>
-                    <li>Develop front-end components, resolve bug-issues</li>
-                    <li>Execute essential technical web-site support</li>
-                    <li>Perform code reviews ensuring that code developed meets coding standards</li>
-                    <li>Recommend improvements to existing software</li>
-                    <li>Improve performance</li>
-                </ul>
-                <h3>Achievements:</h3>
-                <p>One of the key site modules has been redesigned using modern technologies that improve the UX, performance and ease of maintenance of the modules.</p>
-                <p>Established interaction between the front-end team and the design team, allowing to speed up the process of developing new functionality.</p>
+                    <h3>Responsibilities:</h3>
+                    <ul>
+                        <li>Develop front-end components, resolve bug-issues</li>
+                        <li>Perform code reviews</li>
+                        <li>Execute essential technical web-site support</li>
+                        <li>Recommend improvements to existing software</li>
+                        <li>Improve performance</li>
+                        <li>Participate in clarifying the requirements of complex tasks</li>
+                    </ul>
+                    <h3>Achievements:</h3>
+                    <p>Participated in the development of the following features: operator dashboard, vessel (group)
+                        view, voyage calculations/optimization, performance monitoring and reporting, vessel trend and
+                        benchmark analysis.</p>
+                    <p>In addition, I visualized the routes of vessels and tropical cyclones on the map with the ability
+                        to obtain detailed information at each point along the route.</p>
 
-                <h3>Key Technologies:</h3>
-                <p>JavaScript, CSS / SASS, jQuery, Drupal</p>
+                    <h3>Key Technologies:</h3>
+                    <p>React, CSS / SASS, OpenLayers, DevExpress</p>
+                    <hr>
+                </details>
+
+                <details>
+                    <summary title="Click to see details"><strong class="project-title">Media Village<span>Mar 2014 - Dec 2014</span></strong>
+                    </summary>
+                    <h3>Project Overview:</h3>
+                    <p>Project involving a global website redesign for a full-service creative print and design
+                        agency.</p>
+
+                    <h3>Responsibilities:</h3>
+                    <ul>
+                        <li>Develop front-end components, resolve bug-issues</li>
+                        <li>Execute essential technical web-site support</li>
+                        <li>Perform code reviews ensuring that code developed meets coding standards</li>
+                        <li>Recommend improvements to existing software</li>
+                        <li>Improve performance</li>
+                    </ul>
+                    <h3>Achievements:</h3>
+                    <p>One of the key site modules has been redesigned using modern technologies that improve the UX,
+                        performance and ease of maintenance of the modules.</p>
+                    <p>Established interaction between the front-end team and the design team, allowing to speed up the
+                        process of developing new functionality.</p>
+
+                    <h3>Key Technologies:</h3>
+                    <p>JavaScript, CSS / SASS, jQuery, Drupal</p>
+                </details>
             </dd>
-
-            <dd class="clear"></dd>
             
             <dt>Education</dt>
             <dd>
@@ -224,16 +263,12 @@
                 <h2>Belarusian State Technological University - Minsk, Belarus</h2>
                 <p>Chemical Technology</p>
             </dd>
-            
-            <dd class="clear"></dd>
 
             <dt>Languages</dt>
             <dd>
                 <h2>English <span>Upper intermediate</span></h2>
                 <h2>Russian, Belarusian <span>Native</span></h2>
             </dd>
-            
-            <dd class="clear"></dd>
             
             <dt>Testimonials</dt>
             <dd>
@@ -242,12 +277,8 @@
                 <p>I would especially like to highlight his contribution to designing and implementing validation in Wialon Hosting - one of our most complex projects. Sergey is a reliable team member who can work independently and always achieves high results. His positive attitude and ability to work in a team make collaboration pleasant and productive.</p>
                 <p>I'm sure that Sergey will be a valuable asset to any team. I confidently recommend him for any role that requires his deep knowledge and professional approach.</p>
             </dd>
-            
-            <dd class="clear"></dd>
         </dl>
-        
-        <div class="clear"></div>
-    
+
     </div>
 
 </body>
