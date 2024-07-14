@@ -11,8 +11,9 @@ body {
   line-height: 1.5;
 }
 
-.page-wrap {
+main {
   width: 100%;
+  margin: auto;
   padding: 20px 10px;
 }
 
@@ -43,14 +44,14 @@ h2 {
   font-size: var(--font-size-body);
 }
 
-h2 span,
+h2 time,
 .objective p,
-.project-title span,
+.project-title time,
 h3 span {
   font-family: Georgia, serif;
 }
 
-h2 span {
+h2 time {
   display: block;
   color: #999;
   font-style: italic;
@@ -67,7 +68,7 @@ h3 {
   color: #016b5d;
 }
 
-.project-title span,
+.project-title time,
 h3 span {
   margin-left: 10px;
   color: #999;
@@ -103,6 +104,7 @@ ul {
 }
 
 .objective p {
+  max-width: 65ch;
   color: #343434;
   font-style: italic;
 }
@@ -128,10 +130,9 @@ hr {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
-@media screen and (min-width: 1024px) {
-  .page-wrap {
+@media screen and (min-width: 800px) {
+  main {
     width: 800px;
-    margin: 0 auto;
     padding-top: 20px;
   }
 
@@ -159,7 +160,7 @@ hr {
     font-size: 20px;
   }
 
-  h2 span {
+  h2 time {
     font-size: 16px;
   }
 
@@ -171,7 +172,7 @@ hr {
     font-size: 15px;
   }
 
-  .project-title span,
+  .project-title time,
   h3 span {
     font-size: 14px;
   }
@@ -198,7 +199,6 @@ hr {
   }
 
   .objective {
-    width: 700px;
     margin-bottom: 40px;
   }
 }
