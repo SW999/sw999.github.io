@@ -45,13 +45,15 @@ h2 {
 }
 
 h2 time,
+h2 span,
 .objective p,
 .project-title time,
 h3 span {
   font-family: Georgia, serif;
 }
 
-h2 time {
+h2 time,
+h2 span {
   display: block;
   color: #999;
   font-style: italic;
@@ -80,8 +82,24 @@ p {
   margin: 0 0 12px 0;
 }
 
+details:not([open]) {
+  margin: 0 0 10px 0;
+}
+
+details h3, details p, details ul  {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 summary {
+  padding: 5px 5px 5px 10px;
+  border-radius: 4px;
   cursor: pointer;
+  background-color: #e4ecf3;
+}
+
+summary + h3 {
+  margin-top: 10px;
 }
 
 a {
@@ -160,7 +178,7 @@ hr {
     font-size: 20px;
   }
 
-  h2 time {
+  h2 time, h2 span {
     font-size: 16px;
   }
 
@@ -200,5 +218,15 @@ hr {
 
   .objective {
     margin-bottom: 40px;
+  }
+}
+
+@media print {
+  details {
+    border-bottom: thin solid #999;
+  }
+
+  hr {
+    display: none;
   }
 }

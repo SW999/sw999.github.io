@@ -11,9 +11,9 @@
 </head>
 <body>
   <main>
-    <img src="./img/photo.jpg" alt="Me" class="pic" />
+    <img src="./img/photo.jpg" alt="Me" class="pic" width="185" height="200" />
     <div class="vcard">
-      <h1 class="fn">Sergey Vaitehovich<br /><span>Senior Frontend Engineer</span></h1>
+      <h1>Sergey Vaitehovich<br /><span>Senior Frontend Engineer</span></h1>
       <address>
         <strong>Address:</strong> <span>Minsk, Belarus</span><br />
         <strong>Phone:</strong> <span class="tel">+375(29) 686-33-45</span><br />
@@ -244,5 +244,18 @@
       </dd>
     </dl>
   </main>
+  <script>
+    window.addEventListener('beforeprint', () => {
+      document.querySelectorAll('details').forEach(detail => {
+        detail.setAttribute('open', 'open');
+      });
+    });
+
+    window.addEventListener('afterprint', () => {
+      document.querySelectorAll('details').forEach(detail => {
+        detail.removeAttribute('open');
+      });
+    });
+  </script>
 </body>
 </html>
