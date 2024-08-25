@@ -82,6 +82,15 @@ p {
   margin: 0 0 12px 0;
 }
 
+.overview {
+  display:flex;
+  gap:25px;
+}
+
+.overview div:first-child {
+  flex: 1 1 60%;
+}
+
 details:not([open]) {
   margin: 0 0 10px 0;
 }
