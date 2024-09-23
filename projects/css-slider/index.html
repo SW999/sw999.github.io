@@ -1,165 +1,127 @@
 <!DOCTYPE HTML>
-<html lang="ru-RU">
+<html lang="en-US">
 <head>
-  <title>slider</title>
+  <title>Pure CSS slider</title>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<style>
-/*! CSS Used from: https://www.nytimes.com/vi-assets/static-assets/global-a390e9d7a067927dd253742a2f0124d4.css */
-div,span,h3,a,img,figure,figcaption,section{margin:0;padding:0;border:0;font-size:100%;-ms-text-size-adjust:100%;-moz-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;font:inherit;vertical-align:baseline;}
-figcaption,figure,section{display:block;}
-figure{margin:0;}
-img{height:auto;max-width:100%;-ms-interpolation-mode:bicubic;}
-a img{border:none;}
-a{text-decoration:none;color:black;}
-::-ms-clear{display:none;}
-@media print{
-*,*::before,*::after{background:transparent!important;color:#000!important;box-shadow:none!important;text-shadow:none!important;}
-h3{orphans:3;widows:3;}
-h3{page-break-after:avoid;}
-a,a:visited{text-decoration:none!important;}
-a[href^='#']::after{content:'';}
-img{page-break-inside:avoid;}
-img{max-width:100%!important;}
-}
-/*! CSS Used from: Embedded */
-.css-1ly73wi{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;-webkit-clip:rect(0 0 0 0);clip:rect(0 0 0 0);overflow:hidden;}
-.css-rfqw0c{text-align:center;height:100%;display:block;}
-.css-1uk1gs8{margin:0;}
-.css-hdqqnp{width:100%;vertical-align:bottom;}
-.css-1rr4qq7{-webkit-flex:1;-ms-flex:1;flex:1;}
-.css-15rwwo{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;}
-.css-1wd5atx{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;vertical-align:top;}
-.css-142l3g4{position:relative;min-height:90px;width:100%;overflow:hidden;}
-.css-131kqdc{width:100%;color:#999;text-transform:uppercase;font-size:10px;font-family:nyt-franklin,helvetica,arial,sans-serif;text-align:center;-webkit-letter-spacing:0.5px;-moz-letter-spacing:0.5px;-ms-letter-spacing:0.5px;letter-spacing:0.5px;padding:11px 0 10px;}
-.css-9mylee{-webkit-text-decoration:none;text-decoration:none;}
-@media (hover:hover){
-.css-9mylee:hover .indicate-hover{color:var(--color-content-tertiary,#5A5A5A);}
-}
-.css-1pvrrwb{font-family:nyt-cheltenham,georgia,'times new roman',times,serif;font-size:1.25rem;line-height:1.15em;-webkit-letter-spacing:0.01em;-moz-letter-spacing:0.01em;-ms-letter-spacing:0.01em;letter-spacing:0.01em;margin:0;color:var(--color-content-primary,#121212);font-weight:700;-webkit-font-smoothing:antialiased;}
-@media (min-width:600px){
-.css-1pvrrwb{font-family:nyt-cheltenham,georgia,'times new roman',times,serif;font-size:1.125rem;line-height:1.2em;-webkit-letter-spacing:0.01em;-moz-letter-spacing:0.01em;-ms-letter-spacing:0.01em;letter-spacing:0.01em;}
-}
-.css-j4dysj{width:0.25rem;height:0.25rem;}
-.css-cov0u6{position:relative;width:100%;vertical-align:bottom;}
-.css-dzl7b5{opacity:0;-webkit-transition:opacity 300ms ease-in-out;transition:opacity 300ms ease-in-out;width:100%;vertical-align:bottom;}
-.css-9wa3va{background-color:var(--color-background-secondary,#F8F8F8);display:block;width:100%;height:0;position:relative;overflow:hidden;padding:0 0 66.66666666666666% 0;}
-.css-9wa3va > *{position:absolute;top:0;left:0;width:100%;height:100%;}
-.css-1p5yz2j{font-family:nyt-imperial,georgia,'times new roman',times,serif;font-size:0.6875rem;line-height:1.4em;margin:0;color:var(--color-content-quaternary,#727272);text-align:right;margin-top:0.25rem;}
-.css-bvgobc{font-family:nyt-franklin,helvetica,arial,sans-serif;font-size:0.625rem;line-height:1.3em;margin:0;color:var(--color-content-quaternary,#727272);}
-@media (min-width:600px){
-.css-bvgobc{font-size:0.56rem;}
-}
-.css-1ibmel7{background-color:#f7f7f7;border-top:1px solid #e2e2e2;border-bottom:1px solid #e2e2e2;padding-bottom:30px;min-height:250px;}
-@media (min-width:740px){
-.css-1ibmel7{border-bottom:1px solid #f3f3f3;border-top:1px solid #f3f3f3;margin-bottom:0;}
-}
-.css-ap8r2t{height:-webkit-max-content;height:-moz-max-content;height:max-content;}
-/*! CSS Used from: Embedded */
-main *{margin:0px;padding:0px;}
-/*! CSS Used from: Embedded */
-.css-1e4azld{max-width:100vw;}
-@media (min-width: 740px){
-.css-1e4azld{width:var(--margin-shifted-width,107%);margin-left:calc(-1 * var(--platform-margin,3.2%));}
-}
-.css-mbvewf{background-color:transparent;display:block;width:100%;height:0px;position:relative;overflow:hidden;padding:0px 0px 66.6667%;animation:300ms ease-in 0s 1 normal forwards running animation-n5y8bo;}
-.css-mbvewf > *{position:absolute;top:0px;left:0px;width:100%;height:100%;}
-.css-yf0ys{transition:opacity 300ms ease-in-out 0s;opacity:inherit;width:100%;vertical-align:bottom;}
-.css-1ms85kb{font-family:nyt-franklin, helvetica, arial, sans-serif;font-size:1rem;line-height:1.3em;font-weight:700;color:var(--color-content-primary,#121212);letter-spacing:0.5px;margin-bottom:12px;margin-top:-4px;padding-left:1.25rem;padding-right:1.25rem;}
-@media (min-width: 740px){
-.css-1ms85kb{font-family:nyt-franklin, helvetica, arial, sans-serif;font-size:0.875rem;line-height:1.3em;margin-top:-11px;}
-}
-@media (min-width: 740px){
-.css-1ms85kb{padding-left:0px;padding-right:0px;}
-}
-.css-l41qa5{flex:0 0 calc(81.6591%);scroll-snap-align:center;margin-right:4%;}
-.css-1htw97x{flex:0 0 calc(81.6591%);scroll-snap-align:center;margin-right:4%;padding-right:1.25rem;}
-.css-1htw97x:last-child{margin-right:0px;}
-@media (min-width: 740px){
-.css-1htw97x{padding-right:var(--platform-margin,3.2%);}
-}
-.css-12csmp9{overflow:scroll hidden;padding-left:1.25rem;display:flex;flex-flow:row nowrap;scroll-snap-type:x mandatory;}
-@media (min-width: 740px){
-.css-12csmp9{padding-left:var(--platform-margin,3.2%);}
-}
-.css-12csmp9 > *{scroll-snap-align:center;}
-.css-12csmp9::-webkit-scrollbar{display:none;}
-.css-sq3dr7{display:none;margin-bottom:0px;}
-@media (min-width: 740px){
-.css-sq3dr7{position:relative;width:100vw;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
-}
-/*! CSS Used fontfaces */
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-300.fb6b1cd2191b4a3104e3c6b15ce6f294.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-300.48a5e4779dc70097e8f97e08332d1bad.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-300.8fede15c30e43cbc1a20bfa59c045fec.ttf') format('truetype');font-style:italic;font-weight:300;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-500.0fb05587186331cd0a9b0f1a30805e76.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-500.7e321c8cb9da34f32d82e47114f36150.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-500.1a8164a7ba9402b7938a4a088ecdc7c0.ttf') format('truetype');font-style:italic;font-weight:500;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-600.53344665e817d0e6b779b0b12e75db89.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-600.e1875f795ba0d365d032a007eb563b24.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-600.61fa2129de43c6b22d6251bb874e7967.ttf') format('truetype');font-style:italic;font-weight:600;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-700.c2f31454e8f67e6a409c1b5a37c42847.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-700.61d53ea1c2607892d4a7ff00798dbc59.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-700.45666736077d2b862dee9d95a85d8cee.ttf') format('truetype');font-style:italic;font-weight:700;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-800.be53478fd7c32b04647c16795817c00a.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-800.7528246ef94af7fbf426e92d1a234593.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-800.392e85363c515d58d504069f5bff16cc.ttf') format('truetype');font-style:italic;font-weight:800;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-900.93f61fe226df92cc8d8c7aa742f291e7.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-900.b9511ff3ec4a8ab7178d19c1b655c84a.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-italic-900.eb0ff72a1864b509d830becfb3ff9c1f.ttf') format('truetype');font-style:italic;font-weight:900;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-300.a6479a5200f9a6352bdb71589c27c9c3.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-300.fe2bd94ddc6ab147c15e7a4f748b4a9e.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-300.84db46c4aa8492fa2657618cb23f3a2b.ttf') format('truetype');font-style:normal;font-weight:300;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-500.0f4aea3d462cdb64748629efcbbf36bc.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-500.cb85480c30b6ca5f53f673993211036f.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-500.9061b25032eb73a747c2edf738888891.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-600.75739ac267f076931c6da9740386ee6b.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-600.e27b5ffa7bfaa0ac78e146668c74e6f4.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-600.23949bc217f2c95dfe21d3e66ba59445.ttf') format('truetype');font-style:normal;font-weight:600;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-700.91eaf6b5642463af4091160b4bbfdfcb.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-700.ab057a3b069a4ecbde7c3ea74411284e.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-700.3acbe40693cbd3029afc346368ed1b29.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-800.fdc7cad17deeec2db1fe2f9f8c0520ed.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-800.932fec957ef6d36632bd5494d05ad13b.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-800.1dc34c8d18e3128867d8e77368f0da56.ttf') format('truetype');font-style:normal;font-weight:800;font-display:swap;}
-@font-face{font-family:'nyt-franklin';src:url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-900.c7663abf5510617900d31a082a9c2e8d.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-900.a872cf7b59306d8146237e98fb6be2fa.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/franklin/franklin-normal-900.2c951d5351ef934b47077105a883d2d1.ttf') format('truetype');font-style:normal;font-weight:900;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-200.64dd3cfc209bc73fb3279ba16dd3d09f.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-200.a9e372cb4c5086e3924e23b9dad94ff6.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-200.57d2121fab27583198550b38ed84c4a6.ttf') format('truetype');font-style:italic;font-weight:200;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-300.5278551441f9d1ce9cd247421e26a143.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-300.55c933f230696eae11a43a9a2995b24d.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-300.574eeb5bb2bf407111d0789ef94a6504.ttf') format('truetype');font-style:italic;font-weight:300;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-400.0020c60e1c956444040efc53cd3e7be0.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-400.b892fe8e85ceee8640c8b9dd33035349.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-400.b8fcda1bedf33a4ad1e4d11fac428e3a.ttf') format('truetype');font-style:italic;font-weight:400;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-500.c149a85a3db3ccc3cd9e1e217a1e8e4c.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-500.b0a9f31ef2ab8b3f06024843e8b463cf.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-500.0037bc2b5f7715117712e6e1b21d2ae4.ttf') format('truetype');font-style:italic;font-weight:500;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-700.f99a0459024509f157a3352e5de4f873.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-700.d53eaf3b784c4b50d1c331e1278cda67.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-700.c690b74328fddd7feff3bc4c1c1a0cd8.ttf') format('truetype');font-style:italic;font-weight:700;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-800.f3240492eb08ad76f293c523796ec139.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-800.070143a714bc4e4b377c2507e1f67797.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-italic-800.f9bf10941e7cc67f21594eb0d55dfc75.ttf') format('truetype');font-style:italic;font-weight:800;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-200.40ccfe2cc61a71e6617e56162d49b896.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-200.9214ccbb3fe30220fe1fa1129c1906ac.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-200.453c9d3203dec6095bc3f9469e7f87a4.ttf') format('truetype');font-style:normal;font-weight:200;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-300.7ea91ebd036309e1fe756ee3aab272da.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-300.82cb795d8c57bbe367d0ffbeba88eb53.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-300.cecc961ed849c01655ce98886cb1ab47.ttf') format('truetype');font-style:normal;font-weight:300;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-400.a3ed7afe3eaa0a873f3fbd379f8c491b.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-400.23bd4e5c0c27259b064aa9ae6d787980.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-400.4bffe18a586b3b49c9c6d44e382be438.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-500.a22ae3ed1e775ce90ced16f1822f4ddc.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-500.229eebd8069abe2c2253b203c9179e25.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-500.fe8ceaea50c19a1dfffe1bbfa15e283e.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-700.530cfb72378419eedb60da7e266ad5f1.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-700.738608727fc7c5797889e17788508b26.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-700.85ca4d109571e1e0084aace5a31f049c.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap;}
-@font-face{font-family:'nyt-cheltenham';src:url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-800.78ace43907be7e8789003cfd692c3ba4.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-800.3759c9080a568598a298f0b0bc5a5d12.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/cheltenham/cheltenham-normal-800.beea606b16c50bd15a1851fba1dd2411.ttf') format('truetype');font-style:normal;font-weight:800;font-display:swap;}
-@font-face{font-family:'nyt-imperial';src:url('https://g1.nyt.com/fonts/family/imperial/imperial-italic-400.30d6073613e33e742de4c1325b31065c.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-italic-400.12a051d447f08c0acc535c7baf27c4c2.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-italic-400.0004f934c7b51f788c71b39fd3f6e983.ttf') format('truetype');font-style:italic;font-weight:400;font-display:swap;}
-@font-face{font-family:'nyt-imperial';src:url('https://g1.nyt.com/fonts/family/imperial/imperial-italic-600.ea97a1cb7a4d63c8104929537e8ebbc8.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-italic-600.e8bf721d90ab733361bebdabe80fd0af.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-italic-600.1d7c1e45c554c15f6c5e7cb42de73d87.ttf') format('truetype');font-style:italic;font-weight:600;font-display:swap;}
-@font-face{font-family:'nyt-imperial';src:url('https://g1.nyt.com/fonts/family/imperial/imperial-italic-700.996d951f04d92feac357036afa5da0bc.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-italic-700.d029ed6c401f2aa32505f6afc2df3e46.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-italic-700.924a99dda1c6977e84f12005195931c9.ttf') format('truetype');font-style:italic;font-weight:700;font-display:swap;}
-@font-face{font-family:'nyt-imperial';src:url('https://g1.nyt.com/fonts/family/imperial/imperial-normal-400.6131cd77b6e216c7693ed925f4309ffc.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-normal-400.910963d6a159124b2f1ba07ad3f87e00.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-normal-400.9d83d7e0006b668c4caeabf1e42c7cdc.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap;}
-@font-face{font-family:'nyt-imperial';src:url('https://g1.nyt.com/fonts/family/imperial/imperial-normal-600.d93ee3805e0b842a93c3061849fc1862.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-normal-600.b31930c74161921bcaa2c779a16723dd.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-normal-600.84ced11dd3c8b3e06178bd577b019630.ttf') format('truetype');font-style:normal;font-weight:600;font-display:swap;}
-@font-face{font-family:'nyt-imperial';src:url('https://g1.nyt.com/fonts/family/imperial/imperial-normal-700.024693f96c8f2c457e4a6a8d02a636b7.woff2') format('woff2'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-normal-700.53b85cb8b3e80c7a993ba8021fe74a51.woff') format('woff'),        url('https://g1.nyt.com/fonts/family/imperial/imperial-normal-700.fcfda82d29fecb24814254c5e50efdb5.ttf') format('truetype');font-style:normal;font-weight:700;font-display:swap;}
-p {
-margin: 10px;
-font-size: 16px;
-}
-</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+      div, img, section {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 100%;
+          -ms-text-size-adjust: 100%;
+          -moz-text-size-adjust: 100%;
+          -webkit-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+          vertical-align: baseline;
+      }
+
+      img {
+          height: auto;
+          max-width: 100%;
+      }
+
+      .css-slider {
+          max-width: 100vw;
+      }
+
+      @media (min-width: 740px) {
+          .css-slider {
+              width: 107%;
+              margin-left: calc(-1 * 3.2%);
+          }
+      }
+
+      .slider-image {
+          transition: opacity 300ms ease-in-out 0s;
+          opacity: inherit;
+          width: 100%;
+          vertical-align: bottom;
+      }
+
+      .slide {
+          flex: 0 0 calc(81.6591%);
+          scroll-snap-align: center;
+          margin-right: 4%;
+      }
+
+      .slider-wrapper {
+          overflow: scroll hidden;
+          padding-left: 1.25rem;
+          display: flex;
+          flex-flow: row nowrap;
+          scroll-snap-type: x mandatory;
+      }
+
+      @media (min-width: 740px) {
+          .slider-wrapper {
+              padding-left: 3.2%;
+          }
+      }
+
+      .slider-wrapper > * {
+          scroll-snap-align: center;
+      }
+
+      .slider-wrapper::-webkit-scrollbar {
+          display: none;
+      }
+
+      p {
+          margin: 10px;
+          font-size: 16px;
+      }
+  </style>
 </head>
 <body>
-  <div class="container">
-<div id="lipsum">
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum purus vitae felis pulvinar semper. Sed at purus consectetur, semper urna nec, vehicula justo. Vestibulum libero ex, dignissim non scelerisque sed, faucibus malesuada turpis. Cras sed dui auctor, venenatis quam ut, ultrices purus. Curabitur volutpat felis diam, nec venenatis nulla lacinia imperdiet. Quisque a ex at ante euismod aliquam. Nam pharetra, mauris id volutpat bibendum, lorem nibh pretium eros, nec feugiat tellus massa ut ipsum. Etiam vel lorem purus. Phasellus faucibus justo et efficitur malesuada. Nunc bibendum tortor auctor urna accumsan tristique. Donec a eleifend erat. Duis aliquam odio quis nulla commodo rhoncus. Nulla eu tellus placerat, pretium ligula nec, dapibus sapien. Mauris iaculis euismod neque. Ut bibendum maximus justo, eu congue orci pretium eu.
-</p>
-<p>
-Etiam rutrum consectetur nunc sit amet accumsan. Suspendisse ac finibus mi. Proin eleifend tristique ante. Ut tempor sed metus eget cursus. Cras gravida massa ac sagittis vehicula. Morbi efficitur quis metus nec semper. Nam consequat nunc ut tempus luctus.
-</p>
-<p>
-Pellentesque in tristique purus. Sed nec nisl ac nibh cursus tincidunt in vel justo. Phasellus eu justo id est cursus facilisis. Vivamus hendrerit vestibulum lacus quis porttitor. Fusce quis odio vitae leo porttitor sodales. Donec vehicula ultricies lorem et interdum. Nulla viverra sapien at leo mollis scelerisque. Pellentesque laoreet, lorem non tristique interdum, mi nisi hendrerit justo, in malesuada elit arcu malesuada neque. Sed semper velit euismod, hendrerit arcu nec, facilisis nulla. Curabitur ipsum felis, porta nec tortor quis, egestas euismod leo. In hac habitasse platea dictumst.
-</p>
-<p>
-In elementum ac arcu sit amet luctus. Nunc rhoncus ultrices ultrices. Mauris ut libero vitae eros gravida mattis bibendum ac nunc. Sed et pharetra sem, id placerat eros. Etiam faucibus luctus diam, ac sollicitudin nulla. Aenean non metus ac felis volutpat suscipit sit amet ut leo. Sed rutrum justo vel hendrerit consectetur. Etiam a facilisis felis. Donec eget arcu dignissim, venenatis est ut, hendrerit velit. In luctus eleifend pharetra.
-</p>
-<p>
-Maecenas eget facilisis ipsum. Sed in aliquet justo. Aliquam pretium, nibh ut laoreet accumsan, risus tellus dapibus nibh, non tincidunt massa elit accumsan metus. Etiam finibus aliquam pretium. Nam eu massa id enim interdum laoreet sed sed lorem. Sed eros diam, fermentum eu leo eget, posuere luctus neque. Etiam sagittis rutrum venenatis. Fusce egestas nulla elit, nec bibendum libero scelerisque et. Nulla tincidunt sed dolor ut facilisis. Etiam et sem pellentesque nibh tempus sagittis et quis risus. Duis suscipit vestibulum est sit amet blandit. Cras semper nulla sed vehicula congue.
-</p></div>
-  <div class="css-ap8r2t e1ppw5w20"><div class="css-1hkhtys e1ppw5w20"><section><div class="css-15rwwo"><div class="package-title-wrapper css-1wd5atx"><div class="css-1ms85kb">Mind</div></div></div><section class="css-1e4azld"><div class="css-12csmp9"><div class="css-l41qa5"><div class="css-1rr4qq7 story-wrapper"><a class="css-9mylee" href="https://www.nytimes.com/2022/05/11/well/mind/romanticize-your-life-tiktok.html" data-uri="nyt://article/185c867f-1d07-5a2c-abc9-3e2b7bfb71d3" data-story="nyt://article/185c867f-1d07-5a2c-abc9-3e2b7bfb71d3" aria-hidden="false"><figure class="css-1uk1gs8"><div><div class="css-mbvewf"><picture class="css-cov0u6"><source class="css-hdqqnp" media="screen and (max-width: 600px)" srcset="https://static01.nyt.com/images/2022/05/17/well/11Well-Romanticize-Life/11Well-Romanticize-Life-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale"><img class="css-yf0ys" alt="" loading="lazy" src="https://static01.nyt.com/images/2022/05/17/well/11Well-Romanticize-Life/11Well-Romanticize-Life-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale"></picture></div><figcaption class="css-1p5yz2j"><span class="css-bvgobc">Moritz Wienert</span></figcaption></div></figure><div class="css-j4dysj"></div><section class="story-wrapper"><div><div class="css-xdandi"><h3 class="indicate-hover css-1pvrrwb">The Mundane Thrill of ‘Romanticizing Your Life’</h3></div></div></section></a></div></div><div class="css-l41qa5"><div class="css-1rr4qq7 story-wrapper"><a class="css-9mylee" href="https://www.nytimes.com/2022/02/28/well/mind/microdosing-psychedelics.html" data-uri="nyt://article/49d54576-4957-5c0f-8054-67f783517800" data-story="nyt://article/49d54576-4957-5c0f-8054-67f783517800" aria-hidden="false"><figure class="css-1uk1gs8"><div><div class="css-mbvewf"><picture class="css-cov0u6"><source class="css-hdqqnp" media="screen and (max-width: 600px)" srcset="https://static01.nyt.com/images/2022/03/08/well/25microdosing-effectiveness/25microdosing-effectiveness-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale"><img class="css-yf0ys" alt="" loading="lazy" src="https://static01.nyt.com/images/2022/03/08/well/25microdosing-effectiveness/25microdosing-effectiveness-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale"></picture></div><figcaption class="css-1p5yz2j"><span class="css-bvgobc">River Cousin</span></figcaption></div></figure><div class="css-j4dysj"></div><section class="story-wrapper"><div><div class="css-xdandi"><h3 class="indicate-hover css-1pvrrwb">More People Are Microdosing for Mental Health</h3></div></div></section></a></div></div><div class="css-l41qa5"><div class="css-1rr4qq7 story-wrapper"><a class="css-9mylee" href="https://www.nytimes.com/2022/01/17/well/mind/dementia-alzheimers-younger-adults.html" data-uri="nyt://article/9bdda95b-afd7-5bfe-a5d9-f51acde6c209" data-story="nyt://article/9bdda95b-afd7-5bfe-a5d9-f51acde6c209" aria-hidden="false"><figure class="css-1uk1gs8"><div><div class="css-9wa3va"><picture class="css-cov0u6"><source class="css-hdqqnp" media="screen and (max-width: 600px)" srcset="https://static01.nyt.com/images/2022/01/18/science/18sci-brody-dementia/18sci-brody-dementia-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale"><img class="css-dzl7b5" alt="" loading="lazy" src="https://static01.nyt.com/images/2022/01/18/science/18sci-brody-dementia/18sci-brody-dementia-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale"></picture></div><figcaption class="css-1p5yz2j"><span class="css-bvgobc">Lilli Carré</span></figcaption></div></figure><div class="css-j4dysj"></div><section class="story-wrapper"><div><div class="css-xdandi"><h3 class="indicate-hover css-1pvrrwb">When Dementia Strikes at an Early Age</h3></div></div></section></a></div></div><div class="css-l41qa5"><div class="css-1rr4qq7 story-wrapper"><a class="css-9mylee" href="https://www.nytimes.com/2021/07/19/well/mind/men-postpartum-depression.html" data-uri="nyt://article/55856a30-6374-58fc-aa7f-097962494a69" data-story="nyt://article/55856a30-6374-58fc-aa7f-097962494a69" aria-hidden="false"><figure class="css-1uk1gs8"><div><div class="css-9wa3va"><picture class="css-cov0u6"><source class="css-hdqqnp" media="screen and (max-width: 600px)" srcset="https://static01.nyt.com/images/2021/07/25/fashion/16WELL-MALE-PPD/16WELL-MALE-PPD-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale"><img class="css-dzl7b5" alt="" loading="lazy" src="https://static01.nyt.com/images/2021/07/25/fashion/16WELL-MALE-PPD/16WELL-MALE-PPD-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale"></picture></div><figcaption class="css-1p5yz2j"><span class="css-bvgobc">Keith Negley</span></figcaption></div></figure><div class="css-j4dysj"></div><section class="story-wrapper"><div><div class="css-xdandi"><h3 class="indicate-hover css-1pvrrwb">My Husband Had Postpartum Depression</h3></div></div></section></a></div></div><div class="css-1htw97x"><div class="css-1rr4qq7 story-wrapper"><a class="css-9mylee" href="https://www.nytimes.com/2022/04/05/well/mind/susan-cain-bittersweet.html" data-uri="nyt://article/b0888901-98d7-5d47-b10d-227f8377087c" data-story="nyt://article/b0888901-98d7-5d47-b10d-227f8377087c" aria-hidden="false"><figure class="css-1uk1gs8"><div><div class="css-9wa3va"><picture class="css-cov0u6"><source class="css-hdqqnp" media="screen and (max-width: 600px)" srcset="https://static01.nyt.com/images/2022/04/04/well/04WELLREAD-CAIN/04WELLREAD-CAIN-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale"><img class="css-dzl7b5" alt="" loading="lazy" src="https://static01.nyt.com/images/2022/04/04/well/04WELLREAD-CAIN/04WELLREAD-CAIN-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale"></picture></div><figcaption class="css-1p5yz2j"><span class="css-bvgobc">Illustration by Lizzie Gill; Photographs by Getty Images</span></figcaption></div></figure><div class="css-j4dysj"></div><section class="story-wrapper"><div><div class="css-xdandi"><h3 class="indicate-hover css-1pvrrwb">In Defense of Melancholy</h3></div></div></section></a></div></div></div></section></section></div><div class="css-oeful5 e1ppw5w20"><div><div class="css-sq3dr7 e1xxpj0j0" hidden=""><div class="css-1ibmel7 e1xxpj0j1"><div class="css-142l3g4" data-testid="StandardAd"><h3 class="css-131kqdc">Advertisement</h3><a href="#after-dfp-ad-mid4" class="css-1ly73wi">Continue reading the main story</a><div class="ad dfp-ad-mid4-wrapper css-rfqw0c" id="dfp-ad-mid4" data-google-query-id="CN28sd-d3PcCFSrImgodOHUOxg" style="display: none;"><div id="google_ads_iframe_/29390238/nyt/homepage_8__container__" style="border: 0pt none; width: 300px; height: 0px;"></div></div><div id="after-dfp-ad-mid4"></div></div></div></div></div></div></div>
-<div id="lipsum">
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum purus vitae felis pulvinar semper. Sed at purus consectetur, semper urna nec, vehicula justo. Vestibulum libero ex, dignissim non scelerisque sed, faucibus malesuada turpis. Cras sed dui auctor, venenatis quam ut, ultrices purus. Curabitur volutpat felis diam, nec venenatis nulla lacinia imperdiet. Quisque a ex at ante euismod aliquam. Nam pharetra, mauris id volutpat bibendum, lorem nibh pretium eros, nec feugiat tellus massa ut ipsum. Etiam vel lorem purus. Phasellus faucibus justo et efficitur malesuada. Nunc bibendum tortor auctor urna accumsan tristique. Donec a eleifend erat. Duis aliquam odio quis nulla commodo rhoncus. Nulla eu tellus placerat, pretium ligula nec, dapibus sapien. Mauris iaculis euismod neque. Ut bibendum maximus justo, eu congue orci pretium eu.
-</p>
-<p>
-Etiam rutrum consectetur nunc sit amet accumsan. Suspendisse ac finibus mi. Proin eleifend tristique ante. Ut tempor sed metus eget cursus. Cras gravida massa ac sagittis vehicula. Morbi efficitur quis metus nec semper. Nam consequat nunc ut tempus luctus.
-</p>
-<p>
-Pellentesque in tristique purus. Sed nec nisl ac nibh cursus tincidunt in vel justo. Phasellus eu justo id est cursus facilisis. Vivamus hendrerit vestibulum lacus quis porttitor. Fusce quis odio vitae leo porttitor sodales. Donec vehicula ultricies lorem et interdum. Nulla viverra sapien at leo mollis scelerisque. Pellentesque laoreet, lorem non tristique interdum, mi nisi hendrerit justo, in malesuada elit arcu malesuada neque. Sed semper velit euismod, hendrerit arcu nec, facilisis nulla. Curabitur ipsum felis, porta nec tortor quis, egestas euismod leo. In hac habitasse platea dictumst.
-</p>
-<p>
-In elementum ac arcu sit amet luctus. Nunc rhoncus ultrices ultrices. Mauris ut libero vitae eros gravida mattis bibendum ac nunc. Sed et pharetra sem, id placerat eros. Etiam faucibus luctus diam, ac sollicitudin nulla. Aenean non metus ac felis volutpat suscipit sit amet ut leo. Sed rutrum justo vel hendrerit consectetur. Etiam a facilisis felis. Donec eget arcu dignissim, venenatis est ut, hendrerit velit. In luctus eleifend pharetra.
-</p>
-<p>
-Maecenas eget facilisis ipsum. Sed in aliquet justo. Aliquam pretium, nibh ut laoreet accumsan, risus tellus dapibus nibh, non tincidunt massa elit accumsan metus. Etiam finibus aliquam pretium. Nam eu massa id enim interdum laoreet sed sed lorem. Sed eros diam, fermentum eu leo eget, posuere luctus neque. Etiam sagittis rutrum venenatis. Fusce egestas nulla elit, nec bibendum libero scelerisque et. Nulla tincidunt sed dolor ut facilisis. Etiam et sem pellentesque nibh tempus sagittis et quis risus. Duis suscipit vestibulum est sit amet blandit. Cras semper nulla sed vehicula congue.
-</p></div>
+<div class="container">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum purus vitae felis pulvinar semper. Sed at
+    purus consectetur, semper urna nec, vehicula justo. Vestibulum libero ex, dignissim non scelerisque sed, faucibus
+    malesuada turpis. Cras sed dui auctor, venenatis quam ut, ultrices purus. Curabitur volutpat felis diam, nec
+    venenatis nulla lacinia imperdiet. Quisque a ex at ante euismod aliquam. Nam pharetra, mauris id volutpat
+    bibendum, lorem nibh pretium eros, nec feugiat tellus massa ut ipsum. Etiam vel lorem purus. Phasellus faucibus
+    justo et efficitur malesuada. Nunc bibendum tortor auctor urna accumsan tristique. Donec a eleifend erat. Duis
+    aliquam odio quis nulla commodo rhoncus. Nulla eu tellus placerat, pretium ligula nec, dapibus sapien. Mauris
+    iaculis euismod neque. Ut bibendum maximus justo, eu congue orci pretium eu.
+  </p>
+
+  <section class="css-slider">
+    <div class="slider-wrapper">
+      <div class="slide">
+        <img class="slider-image" alt="" loading="lazy"
+             src="https://static01.nyt.com/images/2022/05/17/well/11Well-Romanticize-Life/11Well-Romanticize-Life-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale">
+      </div>
+      <div class="slide">
+        <img class="slider-image" alt="" loading="lazy"
+             src="https://static01.nyt.com/images/2022/03/08/well/25microdosing-effectiveness/25microdosing-effectiveness-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale">
+      </div>
+      <div class="slide">
+        <img class="slider-image" alt="" loading="lazy"
+             src="https://static01.nyt.com/images/2022/05/17/well/11Well-Romanticize-Life/11Well-Romanticize-Life-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale">
+      </div>
+      <div class="slide">
+        <img class="slider-image" alt="" loading="lazy"
+             src="https://static01.nyt.com/images/2022/03/08/well/25microdosing-effectiveness/25microdosing-effectiveness-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale">
+      </div>
+      <div class="slide">
+        <img class="slider-image" alt="" loading="lazy"
+             src="https://static01.nyt.com/images/2022/05/17/well/11Well-Romanticize-Life/11Well-Romanticize-Life-threeByTwoSmallAt2X.jpg?format=pjpg&amp;quality=75&amp;auto=webp&amp;disable=upscale">
+      </div>
+    </div>
+  </section>
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum purus vitae felis pulvinar semper. Sed at
+    purus consectetur, semper urna nec, vehicula justo. Vestibulum libero ex, dignissim non scelerisque sed, faucibus
+    malesuada turpis. Cras sed dui auctor, venenatis quam ut, ultrices purus. Curabitur volutpat felis diam, nec
+    venenatis nulla lacinia imperdiet. Quisque a ex at ante euismod aliquam. Nam pharetra, mauris id volutpat
+    bibendum, lorem nibh pretium eros, nec feugiat tellus massa ut ipsum. Etiam vel lorem purus. Phasellus faucibus
+    justo et efficitur malesuada. Nunc bibendum tortor auctor urna accumsan tristique. Donec a eleifend erat. Duis
+    aliquam odio quis nulla commodo rhoncus. Nulla eu tellus placerat, pretium ligula nec, dapibus sapien. Mauris
+    iaculis euismod neque. Ut bibendum maximus justo, eu congue orci pretium eu.
+  </p>
 </div>
 </body>
 </html>
