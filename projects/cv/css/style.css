@@ -4,6 +4,10 @@
   box-sizing: border-box
 }
 
+:root {
+  interpolate-size: allow-keywords;
+}
+
 body {
   --font-size-body: clamp(12px, calc(0.8rem + 0.25vw), 20px);
   font-family: Helvetica, sans-serif;
@@ -85,11 +89,23 @@ p {
   margin: 0 0 12px 0;
 }
 
+details {
+  overflow: hidden;
+  &::details-content {
+    block-size: 0;
+    transition: block-size 1s, content-visibility 1s;
+    transition-behavior: allow-discrete;
+  }
+  &[open]::details-content {
+    block-size: auto;
+  }
+}
+
 details:not([open]) {
   margin: 0 0 10px 0;
 }
 
-details h3, details p, details ul  {
+details :where(h3, p, ul)  {
   padding-left: 10px;
   padding-right: 10px;
 }
