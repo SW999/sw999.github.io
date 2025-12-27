@@ -1406,13 +1406,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   var now = new Date();
-  var finalDay = 25;
+  var finalDay = 31;
   var finalMonth = 12;
   var currentDay = now.getDate();
   var currentMonth = now.getMonth();
   var counterYear = ((currentDay >= finalDay) && (currentMonth + 1 === finalMonth)) ? now.getFullYear() + 1 : now.getFullYear();
   countdown({
-    until: new Date('Jan, 01, 2025 00:00:00') // you can add time optionally ('Dec, 25, 2020 00:00:00')
+    until: new Date('Jan, 01, 2026 00:00:00')
   });
   snow({
     amount: 100 //Number of particles
