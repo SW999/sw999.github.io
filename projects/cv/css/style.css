@@ -192,7 +192,7 @@ hr {
   }
 
   h1 {
-    width: calc(100% - 200px);
+    width: 100%;
     margin: 0 0 20px 0;
     font-size: 42px;
     letter-spacing: -2px;
@@ -252,12 +252,225 @@ hr {
   }
 }
 
+@page {
+  size: A4;
+  margin: 8mm 11mm;
+}
+
 @media print {
-  details {
-    border-bottom: thin solid #999;
+  body {
+    --font-size-body: 8.3pt;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 8.3pt;
+    line-height: 1.24;
+    color: #1f2937;
+    background: #fff;
   }
 
-  hr {
+  main {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .pic,
+  hr,
+  br,
+  h3 span {
+    display: none !important;
+  }
+
+  .vcard {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #016b5d;
+  }
+
+  h1 {
+    width: auto;
+    margin: 0;
+    border-bottom: 0;
+    font-size: 17pt;
+    line-height: 1.08;
+    letter-spacing: -0.4px;
+    color: #016b5d;
+  }
+
+  h1 br {
+    display: inline !important;
+  }
+
+  h1 span {
+    display: block;
+    margin-top: 2px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 10pt;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    line-height: 1.15;
+    color: #374151;
+  }
+
+  address {
+    font-style: normal;
+    font-size: 8pt;
+    line-height: 1.28;
+    text-align: right;
+    color: #374151;
+  }
+
+  address br {
+    display: inline !important;
+  }
+
+  address a {
+    border-bottom: 0;
+    color: #016b5d;
+  }
+
+  .objective {
+    margin-bottom: 5px;
+  }
+
+  .objective p {
+    max-width: 100%;
+    margin: 0;
+    font-family: inherit;
+    font-style: normal;
+    font-size: 8.5pt;
+    color: #1f2937;
+  }
+
+  .overview {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 5px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #d1d5db;
+  }
+
+  .overview div:first-child {
+    flex: 1 1 58%;
+  }
+
+  .overview div:last-child {
+    flex: 1 1 42%;
+  }
+
+  h2 {
+    margin: 0 0 1.5px 0;
+    font-size: 9.4pt;
+    color: #016b5d;
+    break-after: avoid;
+  }
+
+  h2 time,
+  h2 span {
+    display: inline;
+    margin-left: 6px;
+    font-family: inherit;
+    font-size: 8.2pt;
+    font-style: normal;
+    font-weight: normal;
+    color: #6b7280;
+  }
+
+  h3 {
+    margin: 1.5px 0 1px 0;
+    font-size: 8.2pt;
+    font-weight: 600;
+    color: #111827;
+    break-after: avoid;
+  }
+
+  p {
+    margin: 0 0 2px 0;
+  }
+
+  ul {
+    margin: 0 0 2px 13px;
+  }
+
+  li {
+    margin-bottom: 0.5px;
+  }
+
+  dl {
+    display: block;
+  }
+
+  dt {
+    width: 100%;
+    height: auto;
+    margin: 5px 0 3px 0;
+    padding: 0 0 1px 0;
+    border-right: 0;
+    border-bottom: 1.2px solid #016b5d;
+    font-family: inherit;
+    font-size: 8.8pt;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+    color: #016b5d;
+    break-after: avoid;
+  }
+
+  dd {
+    width: 100%;
+    margin: 0 0 3px 0;
+    padding-left: 0;
+  }
+
+  dd > h2:not(:first-of-type) {
+    margin-top: 5px;
+    padding-top: 3px;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  details {
+    margin: 1px 0 2px 0 !important;
+    border-bottom: 0;
+    overflow: visible;
+  }
+
+  details::details-content,
+  details[open]::details-content {
+    block-size: auto;
+    transition: none;
+  }
+
+  summary {
+    padding: 0;
+    margin: 2px 0 1px 0;
+    background: transparent;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
     display: none;
+  }
+
+  .project-title {
+    margin: 0;
+    font-size: 8.8pt;
+    color: #016b5d;
+  }
+
+  .project-title time {
+    font-family: inherit;
+    font-size: 8pt;
+    font-style: normal;
+    color: #6b7280;
+  }
+
+  details :where(h3, p, ul) {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
